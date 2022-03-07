@@ -15,7 +15,7 @@ function a = SC_plot(DR, DR_SC, x0, tag)
     end
 
     figure;
-    plot(time, y,'b', time, r(i),'r')
+    plot(time, y(1,:),'b', time, r(i),'r')
     grid on
     title("System output")
     xlabel("time/s")

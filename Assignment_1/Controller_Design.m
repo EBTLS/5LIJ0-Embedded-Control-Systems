@@ -24,9 +24,9 @@ DCM.nx = 2;
 DCM.nu = 1;
 
 % sampling time(s)
-DR.h = 0.2e-3;
+DR.h = 1e-3;
 DCM.h = 2 * DR.h;
-tau = 0.3e-3;
+tau = 0.1e-3;
 
 %% State Space Model
 % Dual Rotary System
@@ -55,10 +55,13 @@ DR_CS.sysc = ss(DR_CS.A, DR_CS.B, DR_CS.C, 0);
 % to discrete
 DR_CS.sysd = c2d(DR_CS.sysc, DR.h);
 DR_CS.phi = DR_CS.sysd.a; DR_CS.Gamma = DR_CS.sysd.b; DR_CS.Cd = DR_CS.sysd.c;
+
 % Desired closed-loop poles and pole placement
-DR_CS.alpha = [0.95 0.98 0.98 0.98];
+DR_CS.alpha = [0.9 0.9 0.9 0.9];
+
 % feedback vector
 DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha);
+
 % feedforward gain
 temp = inv(eye(4) - DR_CS.phi - DR_CS.Gamma * DR_CS.K) * DR_CS.Gamma;
 DR_CS.F = 1 / (DR_CS.C * temp);
@@ -66,6 +69,7 @@ DR_CS.F = 1 / (DR_CS.C * temp);
 DR_CS.full_sysc = ss(DR_CS.A + DR_CS.B * DR_CS.K, DR_CS.B * DR_CS.F, DR_CS.C, 0);
 DR_CS.full_sysd = ss(DR_CS.full_sysc, DR.h);
 DR_CS.full_tf = tf(DR_CS.full_sysd);
+
 
 % DCM Control System
 % continuous-time
@@ -76,7 +80,7 @@ DCM_CS.sysd = c2d(DCM_CS.sysc, DCM.h);
 DCM_CS.phi = DCM_CS.sysd.a; DCM_CS.Gamma = DCM_CS.sysd.b; DCM_CS.Cd = DCM_CS.sysd.c;
 
 % Desired closed-loop poles and pole placement
-DCM_CS.alpha = [0.998 0.998];
+DCM_CS.alpha = [0.9 0.9];
 
 % feedback vector
 DCM_CS.K = -acker(DCM_CS.phi, DCM_CS.Gamma, DCM_CS.alpha);
@@ -90,15 +94,26 @@ DCM_CS.full_sysd = ss(DCM_CS.full_sysc, DCM.h);
 DCM_CS.full_tf = tf(DCM_CS.full_sysd);
 
 % Review Controller Result
-figure
-DR_CS.S=stepinfo(DR_CS.full_tf);
-step(DR_CS.full_tf);
-grid on;
-title("DR CS")
-figure
-DCM_CS.S=stepinfo(DCM_CS.full_tf);
-step(DCM_CS.full_tf);
-grid on;
-title("DCM CS")
+% figure
+DR_CS.S = stepinfo(DR_CS.full_tf);
+% step(DR_CS.full_tf);
+% grid on;
+% title("DR CS")
+% figure
+DCM_CS.S = stepinfo(DCM_CS.full_tf);
+% step(DCM_CS.full_tf);
+% grid on;
+% title("DCM CS")
 
 
+assignment1_2022_Simulink_init_DCmotor(0, DCM.h, DCM_CS.K, DCM_CS.F)
+assignment1_2022_Simulink_init_Dualrotary(0, DR.h, DR_CS.K, DR_CS.F)
+
+disp(DR_CS.S)
+disp(DCM_CS.S)
+
+
+x0 = [0;0;];
+SC_plot(DCM, DCM_CS, x0, 'DCM');
+x0 = [0;0;0;0;];
+SC_plot(DR, DR_CS, x0, 'DR');
