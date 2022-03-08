@@ -25,7 +25,7 @@ DCM.nx = 3;
 DCM.nu = 1;
 
 % sampling time(s)
-DR.h = 4e-3;
+DR.h = 2e-3;
 DCM.h = 2 * DR.h;
 tau = 4e-4;
 
@@ -34,7 +34,7 @@ tau = 4e-4;
 DR_CS.A = [0, 0, 1, 0;
            0, 0, 0, 1;
            -DR.k / DR.J1, DR.k / DR.J1, - (DR.d + DR.b) / DR.J1, (DR.d + DR.b) / DR.J1;
-           -DR.k / DR.J2, DR.k / DR.J2, (DR.d + DR.b) / DR.J2, - (DR.d + DR.b) / DR.J2];
+           DR.k / DR.J2, -DR.k / DR.J2, (DR.d + DR.b) / DR.J2, - (DR.d + DR.b) / DR.J2];
 DR_CS.B = [0;
            0;
            DR.Km / DR.J1;
@@ -43,7 +43,7 @@ DR_CS.C = [1 1 0 0];
 
 % DC Motor Speed Control System
 DCM_CS.A = [-DCM.b / DCM.J, DCM.K / DCM.J;
-            -DCM.K / DCM.L, DCM.R / DCM.L];
+            -DCM.K / DCM.L, -DCM.R / DCM.L];
 DCM_CS.B = [0;
             1 / DCM.L];
 DCM_CS.C = [1 0];
