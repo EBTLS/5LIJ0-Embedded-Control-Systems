@@ -59,19 +59,31 @@ DR_CS.phi = DR_CS.sysd.a;
 DR_CS.Gamma = DR_CS.sysd.b; 
 DR_CS.Cd = DR_CS.sysd.c;
 
-% Desired closed-loop poles and pole placement
-DR_CS.alpha = [0.1 0.1 0.1 0.1];
+% with delay
+% DR_CS_aug.Gamma0 = inv(DR_CS.A) * (expm(DR_CS.A * (DR.h - tau)) - expm(DR_CS.A*0)) * DR_CS.B;
+% DR_CS_aug.Gamma1 = inv(DR_CS.A) * (expm(DR_CS.A * DR.h) - expm(DR_CS.A * (DR.h-tau))) * DR_CS.B;
+% simpilfied calculation
+DR_CS_aug.Gamma0 = tau * DR_CS.B + 0.5 * DR_CS.A * (DR.h^2 - (DR.h - tau)^2) * DR_CS.B;
+DR_CS_aug.Gamma1 = (DR.h - tau) * DR_CS.B + 0.5 * DR_CS.A * (DR.h - tau)^2 * DR_CS.B;
 
-% feedback vector5
-DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha);
+% augmentation
+DR_CS_aug.phi= [DR_CS.phi DR_CS_aug.Gamma1; zeros(1,DR.nx)];
+DR_CS_aug.Gamma= [DR_CS_aug.Gamma0; 1];
+DR_CS_aug.C= [DR_CS.Cd 0];
+
+% Desired closed-loop poles and pole placement
+DR_CS_aug.alpha = [0.65 0.65 0.65 0.65 0.65];
+% alternative [0.6 0.6 0.65 0.65 0.65]
+
+% feedback vector
+DR_CS_aug.K = -acker(DR_CS_aug.phi, DR_CS_aug.Gamma, DR_CS_aug.alpha);
 
 % feedforward gain
-temp = inv(eye(4) - DR_CS.phi - DR_CS.Gamma * DR_CS.K) * DR_CS.Gamma;
-DR_CS.F = 1 / (DR_CS.Cd * temp);
+temp = (eye(DR.nx) - DR_CS_aug.phi - DR_CS_aug.Gamma * DR_CS_aug.K) \ DR_CS_aug.Gamma;
+DR_CS_aug.F = 1 / (DR_CS_aug.C * temp);
+clear temp
 
-% DR_CS.full_sysc = ss(DR_CS.phi + DR_CS.Gamma * DR_CS.K, DR_CS.Gamma * DR_CS.F, DR_CS.Cd, 0);
-% DR_CS.full_sysd = c2d(DR_CS.full_sysc, DR.h);
-% DR_CS.full_tf = tf(DR_CS.full_sysd);
+% SC_plot(DR, DR_CS_aug, [0;0;0;0;0], "DR")
 
 
 % DCM Control System
@@ -84,21 +96,31 @@ DCM_CS.phi = DCM_CS.sysd.a;
 DCM_CS.Gamma = DCM_CS.sysd.b; 
 DCM_CS.Cd = DCM_CS.sysd.c;
 
+% with delay
+DCM_CS_aug.Gamma0 = (DCM_CS.A) \ (expm(DCM_CS.A * (DCM.h-tau))-expm(DCM_CS.A * 0)) * DCM_CS.B;
+DCM_CS_aug.Gamma1 = (DCM_CS.A) \ (expm(DCM_CS.A * DCM.h)-expm(DCM_CS.A * (DCM.h - tau))) * DCM_CS.B;
+
+% augmentation
+DCM_CS_aug.phi = [DCM_CS.phi DCM_CS_aug.Gamma1; zeros(1,DCM.nx)];
+DCM_CS_aug.Gamma= [DCM_CS_aug.Gamma0; 1];
+DCM_CS_aug.Cd = [DCM_CS.Cd 0];
+
 % Desired closed-loop poles and pole placement
-DCM_CS.alpha = [0.9 0.9];
+DCM_CS_aug.alpha = [0.98 0.98 0.98];
+% alternative [0.984 0.984 0.984]
+
 % feedback vector
-DCM_CS.K = -acker(DCM_CS.phi, DCM_CS.Gamma, DCM_CS.alpha);
+DCM_CS_aug.K = -acker(DCM_CS_aug.phi, DCM_CS_aug.Gamma, DCM_CS_aug.alpha);
 
 % feedforward gain
-temp = inv(eye(2) - DCM_CS.phi - DCM_CS.Gamma * DCM_CS.K) * DCM_CS.Gamma;
-DCM_CS.F = 1 / (DCM_CS.Cd * temp);
+temp = (eye(DCM.nx) - DCM_CS_aug.phi - DCM_CS_aug.Gamma * DCM_CS_aug.K) \ DCM_CS_aug.Gamma;
+DCM_CS_aug.F = 1 / (DCM_CS_aug.Cd * temp);
 
-% DCM_CS.full_sysc = ss(DCM_CS.phi + DCM_CS.Gamma * DCM_CS.K, DCM_CS.Gamma * DCM_CS.F, DCM_CS.Cd, 0);
-% DCM_CS.full_sysd = c2d(DCM_CS.full_sysc, DCM.h);
-% DCM_CS.full_tf = tf(DCM_CS.full_sysd);
+clear temp
 
+% SC_plot(DCM, DCM_CS_aug, [0;0;0], "DCM")
 % Simulink Simulation
-assignment1_2022_Simulink_init_Dualrotary(tau,DR.h,DR_CS.K, DR_CS.F)
-% assignment1_2022_Simulink_init_DCmotor(0,DCM.h,DCM_CS.K,DCM_CS.F)
+assignment1_2022_Simulink_init_Dualrotary(tau, DR.h, DR_CS_aug.K, 2*DR_CS_aug.F)
+assignment1_2022_Simulink_init_DCmotor(tau, DCM.h, DCM_CS_aug.K, DCM_CS_aug.F)
 
 
