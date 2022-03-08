@@ -1,4 +1,4 @@
-function a = SC_plot(DR, DR_SC, x0, tag)
+function [] = SC_plot(DR, DR_SC, x0, tag)
     time(1) = 0;
     x_1 = [];
     for i=1:3000
@@ -49,5 +49,4 @@ function a = SC_plot(DR, DR_SC, x0, tag)
             ylabel("input")
     end
 
-    a = 1;
 end
