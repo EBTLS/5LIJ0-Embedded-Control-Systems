@@ -25,15 +25,9 @@ DCM.nx = 2;
 DCM.nu = 1;
 
 % sampling time(s)
-<<<<<<< HEAD
-DR.h = 1e-3;
-DCM.h = 2 * DR.h;
-tau = 0.1e-3;
-=======
 DR.h = 4e-3;
 DCM.h = 2 * DR.h;
 tau = 4e-4;
->>>>>>> 43e56b5f9bbecdc9da3c88b211dd148297f38abf
 
 %% State Space Model
 % Dual Rotary System
@@ -61,14 +55,6 @@ DR_CS.sysc = ss(DR_CS.A, DR_CS.B, DR_CS.C, 0);
 
 % to discrete
 DR_CS.sysd = c2d(DR_CS.sysc, DR.h);
-<<<<<<< HEAD
-DR_CS.phi = DR_CS.sysd.a; DR_CS.Gamma = DR_CS.sysd.b; DR_CS.Cd = DR_CS.sysd.c;
-
-% Desired closed-loop poles and pole placement
-DR_CS.alpha = [0.95 0.95 0.98 0.98];
-
-% feedback vector
-=======
 DR_CS.phi = DR_CS.sysd.a; 
 DR_CS.Gamma = DR_CS.sysd.b; 
 DR_CS.Cd = DR_CS.sysd.c;
@@ -77,7 +63,6 @@ DR_CS.Cd = DR_CS.sysd.c;
 DR_CS.alpha = [0.1 0.1 0.1 0.1];
 
 % feedback vector5
->>>>>>> 43e56b5f9bbecdc9da3c88b211dd148297f38abf
 DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha);
 
 % feedforward gain
@@ -100,51 +85,12 @@ DCM_CS.Gamma = DCM_CS.sysd.b;
 DCM_CS.Cd = DCM_CS.sysd.c;
 
 % Desired closed-loop poles and pole placement
-<<<<<<< HEAD
-DCM_CS.alpha = [0.98 0.98];
-
-=======
 DCM_CS.alpha = [0.9 0.9];
->>>>>>> 43e56b5f9bbecdc9da3c88b211dd148297f38abf
 % feedback vector
 DCM_CS.K = -acker(DCM_CS.phi, DCM_CS.Gamma, DCM_CS.alpha);
 
 % feedforward gain
 temp = inv(eye(2) - DCM_CS.phi - DCM_CS.Gamma * DCM_CS.K) * DCM_CS.Gamma;
-<<<<<<< HEAD
-DCM_CS.F = 1 / (DCM_CS.C * temp);
-
-DCM_CS.full_sysc = ss(DCM_CS.A + DCM_CS.B * DCM_CS.K, DCM_CS.B * DCM_CS.F, DCM_CS.C, 0);
-DCM_CS.full_sysd = ss(DCM_CS.full_sysc, DCM.h);
-DCM_CS.full_tf = tf(DCM_CS.full_sysd);
-
-% Review Controller Result
-% figure
-DR_CS.S = stepinfo(DR_CS.full_tf);
-% step(DR_CS.full_tf);
-% grid on;
-% title("DR CS")
-% figure
-DCM_CS.S = stepinfo(DCM_CS.full_tf);
-% step(DCM_CS.full_tf);
-% grid on;
-% title("DCM CS")
-
-% DR_CS.F = -1;
-% DR_CS.K = [-4.88443904058876,5.00609972893520,-0.0301111146583011,0.0348137230844441];
-
-assignment1_2022_Simulink_init_DCmotor(0, DCM.h, DCM_CS.K, DCM_CS.F)
-assignment1_2022_Simulink_init_Dualrotary(0, DR.h, DR_CS.K, DR_CS.F)
-
-disp(DR_CS.S)
-disp(DCM_CS.S)
-
-% 
-% x0 = [0;0;];
-% SC_plot(DCM, DCM_CS, x0, 'DCM');
-x0 = [0;0;0;0;];
-SC_plot(DR, DR_CS, x0, 'DR');
-=======
 DCM_CS.F = 1 / (DCM_CS.Cd * temp);
 
 % DCM_CS.full_sysc = ss(DCM_CS.phi + DCM_CS.Gamma * DCM_CS.K, DCM_CS.Gamma * DCM_CS.F, DCM_CS.Cd, 0);
@@ -156,4 +102,3 @@ assignment1_2022_Simulink_init_Dualrotary(tau,DR.h,DR_CS.K, DR_CS.F)
 % assignment1_2022_Simulink_init_DCmotor(0,DCM.h,DCM_CS.K,DCM_CS.F)
 
 
->>>>>>> 43e56b5f9bbecdc9da3c88b211dd148297f38abf
