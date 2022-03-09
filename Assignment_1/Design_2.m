@@ -1,7 +1,7 @@
 %%%%%
 %%% 5LIJ0 Embedded Control Systems
-%%% Assignment 1
-%%% Author: Jiaxuan Zhang
+%%% Assignment 1 Design 2
+%%% Author: Jiaxuan Zhang, Yiting Li
 %%%%%
 
 
