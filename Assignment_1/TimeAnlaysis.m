@@ -8,17 +8,37 @@
 Core_Frequency=40*1e6;
 
 %% DR CS
-DR_WCET=27375/1e9*1e3
 
+% with delay
+% h=0.002, tau=4e-4
+DR_WCET_1=37075/Core_Frequency*1e3
 
+% h=0.002, tau=1e-3
+DR_WCET_2=36175/Core_Frequency*1e3
 
+% h=0.025, tau=4e-4
+DR_WCET_3=37200/Core_Frequency*1e3
 
 %% DCM CS
+
+% with delay
+% h=0.002 tau=4e-4
+DCM_WCET_1=31150/Core_Frequency*1e3
+
+% h=0.002 tau=1e-3
+DCM_WCET_2=31150/Core_Frequency*1e3
+
+% h=0.025, tau=4e-4
+DCM_WCET_3=32250/Core_Frequency*1e3
 
 
 %% TDMA Timing
 slot_1=2*1e4;
 slot_2=56*1e3;
 slot_3=71*1e3;
+
+part_1=slot_1/Core_Frequency*1e3
+part_2=slot_2/Core_Frequency*1e3
+part_3=slot_3/Core_Frequency*1e3
 
 h=(slot_1+slot_2+slot_3)/Core_Frequency*1e3
