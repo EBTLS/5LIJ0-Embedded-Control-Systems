@@ -10,6 +10,7 @@ Core_Frequency=40*1e6;
 %% DR CS
 
 % with delay
+% WCET ms
 % h=0.002, tau=4e-4
 DR_WCET_1=37075/Core_Frequency*1e3
 
@@ -22,14 +23,41 @@ DR_WCET_3=37200/Core_Frequency*1e3
 %% DCM CS
 
 % with delay
+% WCET ms
+% h=0.002 tau=10e-4
+DCM_WCET_2_10 = 31150/Core_Frequency*1e3;
+% 31150 31150 31150
+
 % h=0.002 tau=4e-4
-DCM_WCET_1=31150/Core_Frequency*1e3
+DCM_WCET_2_4 = 31200/Core_Frequency*1e3;
+% 31250 31150 31250 31150
+
+% h=0.002 tau=2e-4
+DCM_WCET_2_2 = 31150/Core_Frequency*1e3;
+% 31150 31150 31150
+
+% h=0.002 tau=0
+DCM_WCET_2_0 = 31150/Core_Frequency*1e3;
+% 31150 31150 31150
+
+% h=0.001 
+% tau=8e-4
+DCM_WCET_1_10 = 31150/Core_Frequency*1e3;
+% 31225 31150 31150
+
+% tau=2e-4
+DCM_WCET_1_2 = 31150/Core_Frequency*1e3;
+% 31150
+
+% tau=0
+DCM_WCET_1_0 = 31150/Core_Frequency*1e3;
+% 31150 31150 31150
 
 % h=0.002 tau=1e-3
-DCM_WCET_2=31150/Core_Frequency*1e3
+DCM_WCET_2=31150/Core_Frequency*1e3;
 
 % h=0.025, tau=4e-4
-DCM_WCET_3=32250/Core_Frequency*1e3
+DCM_WCET_3=32250/Core_Frequency*1e3;
 
 
 %% TDMA Timing
