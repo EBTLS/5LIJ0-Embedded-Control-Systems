@@ -4,6 +4,9 @@
 %%% Author: Jiaxuan Zhang, Yiting Li
 %%%%%
 
+clear
+clc
+
 
 %% Parameters
 % Dual Rotary System Parameters
@@ -65,15 +68,12 @@ DR_CS.Cd = DR_CS.sysd.c;
 DR_CS.alpha = [0.8 0.8 0.8 0.8];
 
 % feedback vector5
-DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha)
+DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha);
 
 % feedforward gain
-temp = (eye(4) - DR_CS.phi - DR_CS.Gamma * DR_CS.K) \ DR_CS.Gamma;
+temp = (eye(DR.nx) - DR_CS.phi - DR_CS.Gamma * DR_CS.K) \ DR_CS.Gamma;
 DR_CS.F = 1 / (DR_CS.Cd * temp);
 
-assignment1_2022_Simulink_init_Dualrotary(0,DR.h,DR_CS.K, DR_CS.F*2)
-
-% SC_plot(DR,DR_CS,[0;0;0;0],"DR")
 
 %% DCM Control System
 % continuous-time
@@ -91,16 +91,14 @@ DCM_CS.alpha = [0.985 0.985];
 DCM_CS.K = -acker(DCM_CS.phi, DCM_CS.Gamma, DCM_CS.alpha);
 
 % feedforward gain
-temp = inv(eye(2) - DCM_CS.phi - DCM_CS.Gamma * DCM_CS.K) * DCM_CS.Gamma;
+temp = inv(eye(DCM.nx) - DCM_CS.phi - DCM_CS.Gamma * DCM_CS.K) * DCM_CS.Gamma;
 DCM_CS.F = 1 / (DCM_CS.Cd * temp);
-
-% DCM_CS.full_sysc = ss(DCM_CS.phi + DCM_CS.Gamma * DCM_CS.K, DCM_CS.Gamma * DCM_CS.F, DCM_CS.Cd, 0);
-% DCM_CS.full_sysd = c2d(DCM_CS.full_sysc, DCM.h);
-% DCM_CS.full_tf = tf(DCM_CS.full_sysd);
+clear temp
 
 % Simulink Simulation
-assignment1_2022_Simulink_init_DCmotor(0,DCM.h,DCM_CS.K,DCM_CS.F)
+% assignment1_2022_Simulink_init_Dualrotary(0,DR.h,DR_CS.K, DR_CS.F*2)
+% assignment1_2022_Simulink_init_DCmotor(0,DCM.h,DCM_CS.K,DCM_CS.F)
 
-SC_plot(DCM,DCM_CS,[0;0],"DCM")
+
 
 
