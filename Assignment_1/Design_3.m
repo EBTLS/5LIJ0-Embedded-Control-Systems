@@ -104,7 +104,7 @@ DCM_CS.Gamma1_aug = (DCM_CS.A) \ (expm(DCM_CS.A * DCM.h)-expm(DCM_CS.A * (DCM.h 
 
 % augmentation
 DCM_CS.phi_aug = [DCM_CS.phi_aug DCM_CS.Gamma1_aug; zeros(1,DCM.nx)];
-DCM_CS.Gamma_aug= [DCM_CS.Gamma0_aug; 1];
+DCM_CS.Gamma_aug = [DCM_CS.Gamma0_aug; 1];
 DCM_CS.Cd_aug = [DCM_CS.Cd 0];
 
 % Desired closed-loop poles and pole placement
