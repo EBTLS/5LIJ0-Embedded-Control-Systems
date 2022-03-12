@@ -29,7 +29,7 @@ if nargin < 4
 end
 %% Augment the continuous-time system
 %% BEGIN: WRITE CODE TO AUGMENT YOUR SYSTEM DEPENDING ON THE CONTROLLER YOU WANT TO USE.
-[phi_aug, Gamma_aug, C_aug] = augmentSystem(tau,h); %an example function structure
+[phi_aug, Gamma_aug, C_aug] = augmentSystem(tau,h,0); %an example function structure
 %% END: WRITE CODE TO AUGMENT YOUR SYSTEM DEPENDING ON THE CONTROLLER YOU WANT TO USE.
 %% check for controllability
 controllability = ctrb(phi_aug,Gamma_aug);
@@ -43,7 +43,7 @@ if det(controllability) == 0
 	%% Design control gains
 	%% BEGIN: WRITE CODE TO DESIGN YOUR CONTROL GAINS DEPENDING ON THE CONTROLLER YOU WANT TO USE.
 	% An example for LQR is given below.
-	[K_T,F] = designControlGainsLQR(phi_controlled,Gamma_controlled,C_controlled,Q,R); %an example function structure
+	[K_T,F] = designControlGains(phi_controlled,Gamma_controlled,C_controlled,Q,R); %an example function structure
 	%% END: WRITE CODE TO DESIGN YOUR CONTROL GAINS DEPENDING ON THE CONTROLLER YOU WANT TO USE.
 	%% Augmenting uncontrollable states
 	
@@ -52,5 +52,5 @@ if det(controllability) == 0
 	K = K_T*T;
 else
     disp('System is Controllable.');
-    [K, F] = designControlGainsLQR(phi_aug,Gamma_aug,C_aug,Q,R);
+    [K, F] = designControlGainsLQR(phi_aug,Gamma_aug,C_aug,Q,R,"LQR");
 end
