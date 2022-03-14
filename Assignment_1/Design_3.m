@@ -32,7 +32,7 @@ DCM.nu = 1;
 DR.h = 5e-3;
 DCM.h = 2 * DR.h;
 DR.tau = 0.9375e-3;
-DCM.tau=0.8e-3;
+DCM.tau = 0.8e-3;
 
 
 %% State Space Model
@@ -67,8 +67,10 @@ DR_CS.Gamma = DR_CS.sysd.b;
 DR_CS.Cd = DR_CS.sysd.c;
 
 % with delay
-DR_CS.Gamma0 = c2d(DR_CS.sysc, DR.h-DR.tau).b;
+sys = c2d(DR_CS.sysc, DR.h-DR.tau);
+DR_CS.Gamma0 = sys.b;
 DR_CS.Gamma1 = DR_CS.Gamma - DR_CS.Gamma0;
+clear sys
 
 % augmentation
 DR_CS.phi_aug = [DR_CS.phi DR_CS.Gamma1; zeros(1,DR.nx)];
@@ -121,7 +123,8 @@ DCM_CS.F = 1 / (DCM_CS.Cd_aug * temp);
 clear temp
 
 % Simulink Simulation
-% assignment1_2022_Simulink_init_Dualrotary(DR.tau, DR.h, DR_CS.K, 2*DR_CS.F)
-% assignment1_2022_Simulink_init_DCmotor(DCM.tau, DCM.h, DCM_CS.K, DCM_CS.F)
+assignment1_2022_Simulink_init_Dualrotary(DR.tau, DR.h, DR_CS.K, 2*DR_CS.F)
+assignment1_2022_Simulink_init_DCmotor(DCM.tau, DCM.h, DCM_CS.K, DCM_CS.F)
 
-
+Hc_DC = DR.h;
+Hc = DCM.h;
