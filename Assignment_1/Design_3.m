@@ -126,5 +126,5 @@ clear temp
 assignment1_2022_Simulink_init_Dualrotary(DR.tau, DR.h, DR_CS.K, 2*DR_CS.F)
 assignment1_2022_Simulink_init_DCmotor(DCM.tau, DCM.h, DCM_CS.K, DCM_CS.F)
 
-Hc_DC = DR.h;
-Hc = DCM.h;
+Hc = DR.h;
+Hc_DC = DCM.h;
