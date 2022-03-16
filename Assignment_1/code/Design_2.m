@@ -62,8 +62,8 @@ DR_CS.Gamma = DR_CS.sysd.b;
 DR_CS.Cd = DR_CS.sysd.c;
 
 % Desired closed-loop poles and pole placement
-DR_CS.alpha = [0.7 0.7 0.7 0.7];
-% DR_CS.alpha = [0.65 0.65 0.65 0.65];
+% DR_CS.alpha = [0.7 0.7 0.7 0.7];
+DR_CS.alpha = [0.65 0.65 0.65 0.65];
 
 % feedback vector5
 DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha)
@@ -85,8 +85,8 @@ DCM_CS.Gamma = DCM_CS.sysd.b;
 DCM_CS.Cd = DCM_CS.sysd.c;
 
 % Desired closed-loop poles and pole placement
-% DCM_CS.alpha = [0.98,0.98];
-DCM_CS.alpha = [0.988,0.988];
+DCM_CS.alpha_aug = [0.985 0.985];
+% DCM_CS.alpha = [0.988,0.988];
 % feedback vector
 DCM_CS.K = -acker(DCM_CS.phi, DCM_CS.Gamma, DCM_CS.alpha);
 
