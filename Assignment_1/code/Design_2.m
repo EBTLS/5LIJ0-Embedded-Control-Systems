@@ -4,9 +4,6 @@
 %%% Author: Jiaxuan Zhang, Yiting Li
 %%%%%
 
-clear
-clc
-
 
 %% Parameters
 % Dual Rotary System Parameters
@@ -33,7 +30,6 @@ DR.h = 2e-3;
 DCM.h = 2 * DR.h;
 DR.tau = 0.9375e-3;
 DCM.tau=0.8e-3;
-
 
 %% State Space Model
 % Dual Rotary System
@@ -70,12 +66,13 @@ DR_CS.Cd = DR_CS.sysd.c;
 DR_CS.alpha = [0.65 0.65 0.65 0.65];
 
 % feedback vector5
-DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha);
+DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha)
 
 % feedforward gain
-temp = (eye(DR.nx) - DR_CS.phi - DR_CS.Gamma * DR_CS.K) \ DR_CS.Gamma;
+temp = (eye(4) - DR_CS.phi - DR_CS.Gamma * DR_CS.K) \ DR_CS.Gamma;
 DR_CS.F = 1 / (DR_CS.Cd * temp);
 
+assignment1_2022_Simulink_init_Dualrotary(DR.tau,DR.h,DR_CS.K, DR_CS.F*2)
 
 %% DCM Control System
 % continuous-time
@@ -90,14 +87,12 @@ DCM_CS.Cd = DCM_CS.sysd.c;
 % Desired closed-loop poles and pole placement
 DCM_CS.alpha_aug = [0.985 0.985];
 % DCM_CS.alpha = [0.988,0.988];
-
 % feedback vector
 DCM_CS.K = -acker(DCM_CS.phi, DCM_CS.Gamma, DCM_CS.alpha);
 
 % feedforward gain
-temp = inv(eye(DCM.nx) - DCM_CS.phi - DCM_CS.Gamma * DCM_CS.K) * DCM_CS.Gamma;
+temp = inv(eye(2) - DCM_CS.phi - DCM_CS.Gamma * DCM_CS.K) * DCM_CS.Gamma;
 DCM_CS.F = 1 / (DCM_CS.Cd * temp);
-clear temp
 
 % Simulink Simulation
 assignment1_2022_Simulink_init_Dualrotary(DR.tau,DR.h,DR_CS.K, DR_CS.F*2)
