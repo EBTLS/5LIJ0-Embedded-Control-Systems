@@ -31,26 +31,27 @@ DCM.nu = 1;
 % sampling time(s)
 DR.h = 2e-3;
 DCM.h = 2 * DR.h;
-tau = 4e-4;
+DR.tau = 0.9375e-3;
+DCM.tau=0.8e-3;
 
 
 %% State Space Model
 % Dual Rotary System
 DR_CS.A = [0, 0, 1, 0;
-        0, 0, 0, 1;
-        -DR.k / DR.J1, DR.k / DR.J1, - (DR.d + DR.b) / DR.J1, (DR.d + DR.b) / DR.J1;
-        DR.k / DR.J2, -DR.k / DR.J2, (DR.d + DR.b) / DR.J2, - (DR.d + DR.b) / DR.J2];
+           0, 0, 0, 1;
+           -DR.k / DR.J1, DR.k / DR.J1, - (DR.d + DR.b) / DR.J1, (DR.d + DR.b) / DR.J1;
+            DR.k / DR.J2, -DR.k / DR.J2, (DR.d + DR.b) / DR.J2, - (DR.d + DR.b) / DR.J2];
 DR_CS.B = [0;
-        0;
-        DR.Km / DR.J1;
-        0];
+           0;
+           DR.Km / DR.J1;
+           0];
 DR_CS.C = [1 1 0 0];
 
 % DC Motor Speed Control System
 DCM_CS.A = [-DCM.b / DCM.J, DCM.K / DCM.J;
-        -DCM.K / DCM.L, -DCM.R / DCM.L];
+           -DCM.K / DCM.L, -DCM.R / DCM.L];
 DCM_CS.B = [0;
-        1 / DCM.L];
+            1 / DCM.L];
 DCM_CS.C = [1 0];
 
 
@@ -65,7 +66,8 @@ DR_CS.Gamma = DR_CS.sysd.b;
 DR_CS.Cd = DR_CS.sysd.c;
 
 % Desired closed-loop poles and pole placement
-DR_CS.alpha = [0.8 0.8 0.8 0.8];
+% DR_CS.alpha = [0.7 0.7 0.7 0.7];
+DR_CS.alpha = [0.65 0.65 0.65 0.65];
 
 % feedback vector5
 DR_CS.K = -acker(DR_CS.phi, DR_CS.Gamma, DR_CS.alpha);
@@ -86,7 +88,9 @@ DCM_CS.Gamma = DCM_CS.sysd.b;
 DCM_CS.Cd = DCM_CS.sysd.c;
 
 % Desired closed-loop poles and pole placement
-DCM_CS.alpha = [0.985 0.985];
+DCM_CS.alpha_aug = [0.985 0.985];
+% DCM_CS.alpha = [0.988,0.988];
+
 % feedback vector
 DCM_CS.K = -acker(DCM_CS.phi, DCM_CS.Gamma, DCM_CS.alpha);
 
@@ -96,9 +100,10 @@ DCM_CS.F = 1 / (DCM_CS.Cd * temp);
 clear temp
 
 % Simulink Simulation
-% assignment1_2022_Simulink_init_Dualrotary(0,DR.h,DR_CS.K, DR_CS.F*2)
-% assignment1_2022_Simulink_init_DCmotor(0,DCM.h,DCM_CS.K,DCM_CS.F)
+assignment1_2022_Simulink_init_Dualrotary(DR.tau,DR.h,DR_CS.K, DR_CS.F*2)
+assignment1_2022_Simulink_init_DCmotor(DCM.tau,DCM.h,DCM_CS.K,DCM_CS.F)
 
-
+Hc = DR.h;
+Hc_DC = DCM.h;
 
 

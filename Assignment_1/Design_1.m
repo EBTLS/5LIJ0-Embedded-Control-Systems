@@ -113,7 +113,7 @@ DCM_CS.Gamma_aug= [DCM_CS.Gamma0_aug; 1];
 DCM_CS.Cd_aug = [DCM_CS.Cd 0];
 
 % Desired closed-loop poles and pole placement
-DCM_CS.alpha_aug = [0.98 0.98 0.98];
+DCM_CS.alpha_aug = [0.985 0.985 0.985];
 % alternative [0.984 0.984 0.984]
 
 % feedback vector

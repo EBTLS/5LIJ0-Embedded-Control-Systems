@@ -29,10 +29,16 @@ DCM.nx = 3;
 DCM.nu = 1;
 
 % sampling time(s)
-DR.h = 5e-3;
+DR.h = 4e-3;
 DCM.h = 2 * DR.h;
+
 DR.tau = 0.9375e-3;
 DCM.tau = 0.8e-3;
+
+DCM.tau = 2.8875e-3;
+
+% DR.tau = 2e-3;
+% DCM.tau = 2e-3;
 
 
 %% State Space Model
@@ -78,7 +84,7 @@ DR_CS.Gamma_aug = [DR_CS.Gamma0; 1];
 DR_CS.Cd_aug = [DR_CS.Cd 0];
 
 % Desired closed-loop poles and pole placement
-DR_CS.alpha_aug = [0.6 0.6 0.6 0.6 0.6];
+DR_CS.alpha_aug = [0.4 0.4 0.4 0.4 0.4];
 % alternative [0.6 0.6 0.65 0.65 0.65]
 
 % feedback vector
@@ -110,7 +116,7 @@ DCM_CS.Gamma_aug = [DCM_CS.Gamma0_aug; 1];
 DCM_CS.Cd_aug = [DCM_CS.Cd 0];
 
 % Desired closed-loop poles and pole placement
-DCM_CS.alpha_aug = [0.98 0.98 0.98];
+DCM_CS.alpha_aug = [0.963 0.963 0.963];
 % alternative [0.984 0.984 0.984]
 
 % feedback vector
