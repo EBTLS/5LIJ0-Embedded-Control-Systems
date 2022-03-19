@@ -29,7 +29,8 @@ if nargin < 4
 end
 %% Augment the continuous-time system
 %% BEGIN: WRITE CODE TO AUGMENT YOUR SYSTEM DEPENDING ON THE CONTROLLER YOU WANT TO USE.
-[phi_aug, Gamma_aug, C_aug] = augmentSystem(tau,h,0); %an example function structure
+% [phi_aug, Gamma_aug, C_aug] = augmentSystem(tau,h,0); % non-pipeline structure
+[phi_aug, Gamma_aug, C_aug] = augmentSystem(tau,h,1); % pipeline structure
 %% END: WRITE CODE TO AUGMENT YOUR SYSTEM DEPENDING ON THE CONTROLLER YOU WANT TO USE.
 %% check for controllability
 controllability = ctrb(phi_aug,Gamma_aug);
