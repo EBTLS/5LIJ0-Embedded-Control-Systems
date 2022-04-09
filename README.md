@@ -17,3 +17,7 @@ The design is in the folder `Assignment_1`
 # Assignment 2
 
 This is a individual assignment, so that you can see two different folders: `Assignment_2_JXZ` and `Assignment_2_LYD`
+
+# Assignment 3
+
+Hi
