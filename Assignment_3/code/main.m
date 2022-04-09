@@ -6,7 +6,10 @@
 
 %% Initialization
 reference = 0.002;
+% sampling time(s) & delay
+h = 2e-3;
 
+tau=0.8e-3;
 
 %% State Space Model
 % Emergency Braking System
@@ -30,8 +33,4 @@ EMB_CS.D = 0;
 
 
 
-% % sampling time(s)
-% DR.h = 2e-3;
-% DCM.h = 2 * DR.h;
-% DR.tau = 0.9375e-3;
-% DCM.tau=0.8e-3;
+
