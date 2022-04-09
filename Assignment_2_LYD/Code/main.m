@@ -1,6 +1,6 @@
 %%%%%
 %%% 5LIJ0 Embedded Control Systems
-%%% Assignment 1 Design 1
+%%% Assignment 2 
 %%%%%
 
 clc;
