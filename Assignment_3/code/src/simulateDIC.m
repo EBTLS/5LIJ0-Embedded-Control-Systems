@@ -36,7 +36,7 @@ for loop=1:num_plots
             end
             z_1 = phi{m}*z0 + Gamma{m}*u(timeScenario);
             z0 = z_1;
-            trackCurrentPeriod=trackCurrentPeriod+(h(m)/fh);
+            trackCurrentPeriod=trackCurrentPeriod+ceil((h(m)/fh));
             if i>1 %update simulation times
                 timeY(timeScenario) = timeY(timeScenario-1) + h(m);
                 timeU(timeScenario) = timeY(timeScenario-1) + tauSystemScenarios(m); 

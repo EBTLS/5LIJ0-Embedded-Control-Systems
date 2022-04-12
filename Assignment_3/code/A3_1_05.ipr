@@ -1,0 +1,2114 @@
+<?xml version='1.0' ?>
+<cs2:chronsimproject xmlns:cs2="http://www.inchron.com/inchron-2.9.2.xsd" xsi:schemaLocation="http://www.inchron.com/inchron-2.9.2.xsd" version="2.0" uuid="{09162f32-b7be-4ca7-855e-c87be8ee1dd6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+   <general>
+      <dir>D:\Softwares\Courses\5LIJ0_ECS\Inchron\A3_1</dir>
+      <sourceipr>D:\Softwares\Courses\5LIJ0_ECS\Inchron\A3_1\A3_1_05.ipr</sourceipr>
+      <savedir>D:\Softwares\Courses\5LIJ0_ECS\Inchron\A3_1</savedir>
+      <name>A3_1</name>
+      <version></version>
+      <description>
+         <comment></comment>
+         <creation>2022-04-10T11:02:37</creation>
+         <modification>2022-04-11T21:34:29</modification>
+      </description>
+      <last-modified>2022-04-11T23:34:29</last-modified>
+      <author>jxzhang</author>
+      <email></email>
+      <creator build="20200828A" version="2.9.2" />
+      <omitdiagrams stack="false" callnesting="false" impliciteventchains="false" />
+   </general>
+   <specification>
+      <anddependency uid="|P:A3_1|RI:OSEK_2|AND:AND_Steering_Assist_Input" name="AND_Steering_Assist_Input" parentuid="|P:A3_1|RI:OSEK_2" />
+      <anddependency uid="|P:A3_1|RI:OSEK_2|AND:AND_Departure_Detection_Input" name="AND_Departure_Detection_Input" parentuid="|P:A3_1|RI:OSEK_2" />
+      <anddependency uid="|P:A3_1|RI:OSEK_3|AND:AND_Vehicle_Dynamics_Input" name="AND_Vehicle_Dynamics_Input" parentuid="|P:A3_1|RI:OSEK_3" />
+      <anddependency uid="|P:A3_1|RI:OSEK_3|AND:AND_Motion_Planning" name="AND_Motion_Planning" parentuid="|P:A3_1|RI:OSEK_3" />
+      <specsettings>
+         <includepath>$INSTALL\lib</includepath>
+         <options cc="none" rtos="none" warn="1" additionalcflags="" std="ISO C99" PrependSpecSettingsFlag="0" />
+      </specsettings>
+      <autosar>
+         <rootcomposition uid="|P:A3_1|ASWCI:Autosar Application Instance" name="Autosar Application Instance" />
+      </autosar>
+   </specification>
+   <allocation exactness="50" >
+      <resourcetype library="$INSTALL\models\generic-osek.ism" type="generic-osek" name="OSEK_1" >
+         <clock period="1 ns" />
+         <rtos>
+            <processes exclusive="false" preemptFlag="true" exactness="50" xcoreisrs="false" isrFlag="true" maximum="99" />
+            <stack default="1024" />
+            <scheduler strategy="Priority" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="preemptive" jitter="0 us" wcet="0 us" uuid="{d21da6da-1425-4359-b84a-cfa1592a0e24}" allowed_types="4294967295" timeslice="10 ms" name="ISRScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:25:24</creation>
+                  <modification>2022-04-10T12:25:24</modification>
+               </description>
+               <scheduler strategy="OSEK" offset="0 us" cycle="0 us" allowed_strategies="64" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="1" priority="0" type="preemptive" jitter="0 us" wcet="0 us" uuid="{d123afeb-4534-47dc-9686-49ad4a4551cb}" allowed_types="1" timeslice="10 ms" name="DefaultScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:25:36</creation>
+                     <modification>2022-04-10T12:25:36</modification>
+                  </description>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="C_Emergency_Braking" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="1.5 ms" uuid="{c091d805-c6ec-4799-804a-9e47a7245ca1}" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Emergency_Braking" deadline="0 us" slot="0 us" bcet="1 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:26:15</creation>
+                           <modification>2022-04-10T12:26:15</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="500 us" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="C_Image_Processing" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="60 ms" uuid="{c707bdb7-3d26-4be9-996d-03adb1ccfb79}" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" deadline="0 us" slot="0 us" bcet="60 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:25:47</creation>
+                           <modification>2022-04-10T12:25:47</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="35 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="A_Dash_Info" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="1" extendedtask="0" jitter="0 us" wcet="20 ms" uuid="{3bfd56f6-953b-46a0-8081-0f79b1f4b7c6}" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" deadline="0 us" slot="0 us" bcet="15 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:24:13</creation>
+                           <modification>2022-04-10T12:24:13</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="7.5 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+               </scheduler>
+            </scheduler>
+         </rtos>
+         <compiler path="" optimization="0" type="" />
+         <instance uuid="{bea7f32b-cf1a-4cf9-9dd6-b3ad43fea28f}" name="OSEK_1" >
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T12:25:24</creation>
+               <modification>2022-04-11T20:55:26</modification>
+               <targetcpu></targetcpu>
+            </description>
+            <cores>
+               <support>false</support>
+               <editable>false</editable>
+               <physical>1</physical>
+               <logical>1</logical>
+               <memory>uma</memory>
+               <core uuid="{c022ad56-21b4-4a20-b4ee-21b49ea98411}" name="Core 0" />
+            </cores>
+            <ipcobjects/>
+            <triggermodel>
+               <tokens/>
+            </triggermodel>
+            <references/>
+            <peripheral base="0x100" fabric="8" bufferstrategy="SlotOrder" uuid="{f5fa1efa-3089-4303-a97a-9f08a816afc3}" name="CAN_Bus_Slow" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:36:26</creation>
+                  <modification>2022-04-10T12:42:46</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{1cdb232e-b936-40a7-8142-e529b42ec4ff}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:36:26</creation>
+                     <modification>2022-04-10T12:36:26</modification>
+                  </description>
+                  <busmessage offset="0 us" cycle="0 us" size="1" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="10485760" id="5" jitter="0 us" wcet="1.44444443 ms" uuid="{b9c98ed7-3089-4fb0-aff4-79f31afbf804}" fastBitRate="0" name="Emergency_Braking_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="Classic" bcet="1.22222221 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T12:56:50</creation>
+                        <modification>2022-04-10T12:56:50</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+               </scheduler>
+            </peripheral>
+            <peripheral base="0x1100" fabric="8" bufferstrategy="SlotOrder" uuid="{f070844f-17b2-4187-9747-a2535592a12b}" name="CAN_Bus_Fast" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:43:00</creation>
+                  <modification>2022-04-10T12:43:00</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{d9660658-714a-458c-8f72-bf51e3ffb787}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:43:00</creation>
+                     <modification>2022-04-10T12:43:00</modification>
+                  </description>
+                  <busmessage offset="0 us" cycle="0 us" size="8" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="0" id="0" jitter="0 us" wcet="2.076923025 ms" uuid="{e9efc080-9577-4ef3-ae39-b4d8ab735360}" fastBitRate="0" name="Image_Processing_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="Classic" bcet="1.707692265 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T12:54:50</creation>
+                        <modification>2022-04-10T12:54:50</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+               </scheduler>
+            </peripheral>
+            <segmentmap uuid="{3d2ded36-e7cf-4478-948c-62476dcd7b4e}" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:25:36</creation>
+                  <modification>2022-04-10T12:25:36</modification>
+               </description>
+               <segment flags="0x122" base="0x1000000" size="0x0" sections="data:bss:.bss:stack:heap" pages="1" name="ram" />
+               <segment flags="0x113" base="0x2000000" size="0x0" sections="text" pages="1" name="rom" />
+            </segmentmap>
+            <clock gran_unit="ns" range_value="1" start_unit="us" gran_value="1" drift_value="0" range_unit="s" id="|P:A3_1|RI:OSEK_1|Clk:OSEK_1" uuid="{b2c3a98a-6ec6-425d-90e0-599c350f1ff7}" start_value="0" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:25:24</creation>
+                  <modification>2022-04-10T12:25:29</modification>
+               </description>
+               <start firstMax="0 us" firstMin="0 us" first="0 us" randomStart="false" />
+            </clock>
+            <specsettings>
+               <options cc="none" rtos="none" warn="1" additionalcflags="" std="ISO C99" PrependSpecSettingsFlag="0" />
+            </specsettings>
+         </instance>
+      </resourcetype>
+      <resourcetype library="$INSTALL\models\generic-osek.ism" type="generic-osek" name="OSEK_2" >
+         <clock period="1 ns" />
+         <rtos>
+            <processes exclusive="false" preemptFlag="true" exactness="50" xcoreisrs="false" isrFlag="true" maximum="99" />
+            <stack default="1024" />
+            <scheduler strategy="Priority" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="preemptive" jitter="0 us" wcet="0 us" uuid="{76b5a061-e524-49e9-b3f1-5a7710d1bc5e}" allowed_types="4294967295" timeslice="10 ms" name="ISRScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:26:43</creation>
+                  <modification>2022-04-10T12:26:43</modification>
+               </description>
+               <scheduler strategy="OSEK" offset="0 us" cycle="0 us" allowed_strategies="64" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="1" priority="0" type="preemptive" jitter="0 us" wcet="0 us" uuid="{841022f9-7111-4d2e-811f-5c105bd50226}" allowed_types="1" timeslice="10 ms" name="DefaultScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:26:51</creation>
+                     <modification>2022-04-10T12:26:51</modification>
+                  </description>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="S_On_Off_Button" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="3 ms" uuid="{c95ef8db-835d-4069-9654-9c90c80ead5c}" name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_On_Off_Button" deadline="0 us" slot="0 us" bcet="2 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:27:12</creation>
+                           <modification>2022-04-10T12:27:12</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="1 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="C_Departure_Detection" preemptable="1" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="2" extendedtask="0" jitter="0 us" wcet="55 ms" uuid="{29fc4eed-2352-4720-8729-dc63e45b4aae}" name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection" deadline="0 us" slot="0 us" bcet="50 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:29:35</creation>
+                           <modification>2022-04-10T12:29:35</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="25 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="C_Steering_Assist" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="1" extendedtask="0" jitter="0 us" wcet="35 ms" uuid="{9d4ee3d0-11b3-45f6-af5f-2020ca6560b3}" name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist" deadline="0 us" slot="0 us" bcet="30 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:27:38</creation>
+                           <modification>2022-04-10T12:27:38</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="15 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+               </scheduler>
+            </scheduler>
+         </rtos>
+         <compiler path="" optimization="0" type="" />
+         <instance uuid="{4a3d3f53-63d4-4705-b626-8cbc67c17be7}" name="OSEK_2" >
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T12:26:43</creation>
+               <modification>2022-04-11T20:55:26</modification>
+               <targetcpu></targetcpu>
+            </description>
+            <cores>
+               <support>false</support>
+               <editable>false</editable>
+               <physical>1</physical>
+               <logical>1</logical>
+               <memory>uma</memory>
+               <core uuid="{3a6550f1-0b7f-4c7b-8970-1a1e4d1209af}" name="Core 0" />
+            </cores>
+            <ipcobjects/>
+            <triggermodel>
+               <tokens/>
+            </triggermodel>
+            <references/>
+            <peripheral base="0x100" fabric="8" bufferstrategy="SlotOrder" uuid="{48466581-703e-4fd7-8946-fa34107cdb06}" name="CAN_Bus_Slow" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:37:08</creation>
+                  <modification>2022-04-10T12:39:04</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{4458434d-acb7-4ec2-8e67-304e92fcec42}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:37:08</creation>
+                     <modification>2022-04-10T12:37:08</modification>
+                  </description>
+                  <busmessage offset="0 us" cycle="0 us" size="2" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="2097152" id="1" jitter="0 us" wcet="1.66666665 ms" uuid="{d3c3b1a3-2ff9-4374-8d6a-1d71f958c446}" fastBitRate="0" name="Steering_Assist_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="Classic" bcet="1.399999986 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T12:58:07</creation>
+                        <modification>2022-04-10T12:58:07</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+                  <busmessage offset="0 us" cycle="0 us" size="6" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="" priority="4294967295" id="0" jitter="0 us" wcet="2.55555553 ms" uuid="{764c58be-1b78-435b-8652-4bf74bbffe2a}" fastBitRate="0" name="Departure_Detection_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="Classic" bcet="2.11111109 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-11T21:34:02</creation>
+                        <modification>2022-04-11T21:34:02</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+               </scheduler>
+            </peripheral>
+            <peripheral base="0x1100" fabric="8" bufferstrategy="SlotOrder" uuid="{f08a2047-2370-40b5-a6cb-1845e881ef71}" name="CAN_Bus_Fast" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:39:18</creation>
+                  <modification>2022-04-10T12:39:18</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{3694ac4f-ebf5-4009-965f-a87922f1ece4}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:39:18</creation>
+                     <modification>2022-04-10T12:39:18</modification>
+                  </description>
+               </scheduler>
+            </peripheral>
+            <segmentmap uuid="{e9157ff8-6773-4a8f-906f-b50b642dd85f}" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:26:51</creation>
+                  <modification>2022-04-10T12:26:51</modification>
+               </description>
+               <segment flags="0x122" base="0x1000000" size="0x0" sections="data:bss:.bss:stack:heap" pages="1" name="ram" />
+               <segment flags="0x113" base="0x2000000" size="0x0" sections="text" pages="1" name="rom" />
+            </segmentmap>
+            <clock gran_unit="ns" range_value="1" start_unit="us" gran_value="1" drift_value="0" range_unit="s" id="|P:A3_1|RI:OSEK_2|Clk:OSEK_2" uuid="{13986acc-6d57-4a73-af15-90360f182251}" start_value="0" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:26:43</creation>
+                  <modification>2022-04-10T12:26:47</modification>
+               </description>
+               <start firstMax="0 us" firstMin="0 us" first="0 us" randomStart="false" />
+            </clock>
+            <specsettings>
+               <options cc="none" rtos="none" warn="1" additionalcflags="" std="ISO C99" PrependSpecSettingsFlag="0" />
+            </specsettings>
+         </instance>
+      </resourcetype>
+      <resourcetype library="$INSTALL\models\generic-osek.ism" type="generic-osek" name="OSEK_3" >
+         <clock period="1 ns" />
+         <rtos>
+            <processes exclusive="false" preemptFlag="true" exactness="50" xcoreisrs="false" isrFlag="true" maximum="99" />
+            <stack default="1024" />
+            <scheduler strategy="Priority" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="preemptive" jitter="0 us" wcet="0 us" uuid="{7af16613-66b8-414b-8180-778b71c46565}" allowed_types="4294967295" timeslice="10 ms" name="ISRScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:28:12</creation>
+                  <modification>2022-04-10T12:28:12</modification>
+               </description>
+               <scheduler strategy="OSEK" offset="0 us" cycle="0 us" allowed_strategies="64" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="1" priority="0" type="preemptive" jitter="0 us" wcet="0 us" uuid="{0e7b3a97-4d0a-4dd1-b011-05f55c5bfcdf}" allowed_types="1" timeslice="10 ms" name="DefaultScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:28:27</creation>
+                     <modification>2022-04-10T12:28:27</modification>
+                  </description>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="C_Motion_Planning" preemptable="1" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="1" extendedtask="0" jitter="0 us" wcet="65 ms" uuid="{54f8e742-2de8-4c07-a862-944ef08884c4}" name="|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Motion_Planning" deadline="0 us" slot="0 us" bcet="60 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:29:02</creation>
+                           <modification>2022-04-10T12:29:02</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="30 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" type="osek" idletask="0" name="C_Vehicle_Dynamics" preemptable="1" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="1" extendedtask="0" jitter="0 us" wcet="30 ms" uuid="{fd20998c-d0ae-4e94-87a3-b06154b810db}" name="|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Vehicle_Dynamics" deadline="0 us" slot="0 us" bcet="25 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:28:30</creation>
+                           <modification>2022-04-10T12:28:30</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="12.5 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+               </scheduler>
+            </scheduler>
+         </rtos>
+         <compiler path="" optimization="0" type="" />
+         <instance uuid="{73644832-9195-4dde-be96-f4dfeb67a796}" name="OSEK_3" >
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T12:28:12</creation>
+               <modification>2022-04-11T20:55:26</modification>
+               <targetcpu></targetcpu>
+            </description>
+            <cores>
+               <support>false</support>
+               <editable>false</editable>
+               <physical>1</physical>
+               <logical>1</logical>
+               <memory>uma</memory>
+               <core uuid="{469ced83-f56f-4cc8-b249-9e1558ba364a}" name="Core 0" />
+            </cores>
+            <ipcobjects/>
+            <triggermodel>
+               <tokens/>
+            </triggermodel>
+            <references/>
+            <peripheral base="0x100" fabric="8" bufferstrategy="SlotOrder" uuid="{a8c485a7-a376-4fdb-8d53-c391d936fcec}" name="CAN_Bus_Slow" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:37:45</creation>
+                  <modification>2022-04-10T12:37:45</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{132c375a-f32e-4eed-9aad-da54ebc9398e}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:37:45</creation>
+                     <modification>2022-04-10T12:37:45</modification>
+                  </description>
+                  <busmessage offset="0 us" cycle="0 us" size="16" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="4194304" id="2" jitter="0 us" wcet="5.044444394 ms" uuid="{4c527bd6-f41e-411b-9af0-9308202e4d2b}" fastBitRate="0" name="Motion_Planning_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="FD" bcet="4.22222218 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T12:58:55</creation>
+                        <modification>2022-04-10T12:58:55</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+               </scheduler>
+            </peripheral>
+            <peripheral base="0x1100" fabric="8" bufferstrategy="SlotOrder" uuid="{0161dfcd-cbb6-44d9-b4e3-83163655a651}" name="CAN_Bus_Fast" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:38:17</creation>
+                  <modification>2022-04-10T12:38:17</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{ee1632cb-6273-415e-acfb-3699567c5d51}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:38:17</creation>
+                     <modification>2022-04-10T12:38:17</modification>
+                  </description>
+               </scheduler>
+            </peripheral>
+            <segmentmap uuid="{fedf12a1-df31-4973-b310-db6c6627df24}" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:28:27</creation>
+                  <modification>2022-04-10T12:28:27</modification>
+               </description>
+               <segment flags="0x122" base="0x1000000" size="0x0" sections="data:bss:.bss:stack:heap" pages="1" name="ram" />
+               <segment flags="0x113" base="0x2000000" size="0x0" sections="text" pages="1" name="rom" />
+            </segmentmap>
+            <clock gran_unit="ns" range_value="1" start_unit="us" gran_value="1" drift_value="0" range_unit="s" id="|P:A3_1|RI:OSEK_3|Clk:OSEK_3" uuid="{135b41df-47e9-48d9-a17b-770c0bc4fe69}" start_value="0" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:28:12</creation>
+                  <modification>2022-04-10T12:28:19</modification>
+               </description>
+               <start firstMax="0 us" firstMin="0 us" first="0 us" randomStart="false" />
+            </clock>
+            <specsettings>
+               <options cc="none" rtos="none" warn="1" additionalcflags="" std="ISO C99" PrependSpecSettingsFlag="0" />
+            </specsettings>
+         </instance>
+      </resourcetype>
+      <resourcetype library="$INSTALL\models\generic.ism" type="generic" name="TDMA_1" >
+         <clock period="1 ns" />
+         <rtos>
+            <processes exclusive="false" preemptFlag="true" exactness="50" xcoreisrs="false" isrFlag="true" maximum="99" />
+            <stack default="1024" />
+            <scheduler strategy="Priority" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="preemptive" jitter="0 us" wcet="0 us" uuid="{e6e2b119-8599-4b39-93fa-6f2254c56d8f}" allowed_types="4294967295" timeslice="10 ms" name="ISRScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T11:03:34</creation>
+                  <modification>2022-04-10T11:03:34</modification>
+               </description>
+               <scheduler strategy="TDMA" offset="0 us" cycle="5.5 ms" allowed_strategies="67125279" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="0" type="preemptive" jitter="0 us" wcet="0 us" uuid="{795983b5-bde3-4326-8a24-8f8c7fe28a8a}" allowed_types="4294967295" timeslice="10 ms" name="DefaultScheduler" tdmaperiod="16.67 ms" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T11:04:12</creation>
+                     <modification>2022-04-10T11:04:12</modification>
+                  </description>
+                  <scheduletable>
+                     <schedulable order="0" uid="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" slot="4.5 ms" />
+                     <schedulable order="1" uid="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Braking" slot="1 ms" />
+                  </scheduletable>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" idletask="0" name="S_Front_Camera" preemptable="1" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="4 ms" uuid="{10500da6-c40c-4668-b5cd-b8a488020b3f}" name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" deadline="0 us" slot="0 us" bcet="3 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T11:05:17</creation>
+                           <modification>2022-04-10T11:05:17</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="1.5 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" idletask="0" name="A_Braking" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="500 us" uuid="{2d9fb7c4-4fff-4df6-806e-2723efc5c99b}" name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Braking" deadline="0 us" slot="0 us" bcet="500 us" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:23:50</creation>
+                           <modification>2022-04-10T12:23:50</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="250 us" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+               </scheduler>
+            </scheduler>
+         </rtos>
+         <compiler path="" optimization="0" type="" />
+         <instance uuid="{f1259ddd-b77d-4852-bec7-37431e13f925}" name="TDMA_1" >
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T11:03:34</creation>
+               <modification>2022-04-11T20:55:26</modification>
+               <targetcpu></targetcpu>
+            </description>
+            <cores>
+               <support>false</support>
+               <editable>false</editable>
+               <physical>1</physical>
+               <logical>1</logical>
+               <memory>uma</memory>
+               <core uuid="{17795b28-c5f1-4e21-babc-b506cb71767f}" name="Core 0" />
+            </cores>
+            <ipcobjects/>
+            <triggermodel>
+               <tokens/>
+            </triggermodel>
+            <references/>
+            <peripheral base="0x100" fabric="8" bufferstrategy="SlotOrder" uuid="{8677d688-8de6-406a-a1cb-a24715f4c2a0}" name="CAN_Bus_Fast" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:40:39</creation>
+                  <modification>2022-04-10T12:40:39</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{9fa370ea-e8d8-4862-b04f-00ceae7a07c4}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:40:39</creation>
+                     <modification>2022-04-10T12:40:39</modification>
+                  </description>
+                  <busmessage offset="0 us" cycle="0 us" size="64" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="2097152" id="1" jitter="0 us" wcet="10.95384588 ms" uuid="{e5ff150e-2343-420a-ae0c-d8ed72a7d9d1}" fastBitRate="0" name="Front_Camera_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="FD" bcet="8.907692085 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:01:31</creation>
+                        <modification>2022-04-10T13:01:31</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+                  <busmessage offset="0 us" cycle="0 us" size="64" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="2097152" id="1" jitter="0 us" wcet="10.95384588 ms" uuid="{40ec0a4c-00f6-47bd-a7ac-82c14f78a959}" fastBitRate="0" name="Front_Camera_Data_1" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="FD" bcet="8.907692085 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:16:08</creation>
+                        <modification>2022-04-10T13:16:08</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+                  <busmessage offset="0 us" cycle="0 us" size="64" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="2097152" id="1" jitter="0 us" wcet="10.95384588 ms" uuid="{3385a9f0-a536-4ac9-ba4c-7ad0ebffc27a}" fastBitRate="0" name="Front_Camera_Data_2" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="FD" bcet="8.907692085 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:16:54</creation>
+                        <modification>2022-04-10T13:16:54</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+                  <busmessage offset="0 us" cycle="0 us" size="64" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="2097152" id="1" jitter="0 us" wcet="10.95384588 ms" uuid="{759ed724-b942-47b3-a822-b489a2a652cc}" fastBitRate="0" name="Front_Camera_Data_3" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="FD" bcet="8.907692085 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:17:39</creation>
+                        <modification>2022-04-10T13:17:39</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+                  <busmessage offset="0 us" cycle="0 us" size="64" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="2097152" id="1" jitter="0 us" wcet="10.95384588 ms" uuid="{0b2edcd9-f22d-4aa1-b5d4-41ae2382534d}" fastBitRate="0" name="Front_Camera_Data_4" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="FD" bcet="8.907692085 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:18:13</creation>
+                        <modification>2022-04-10T13:18:13</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+               </scheduler>
+            </peripheral>
+            <segmentmap uuid="{c29e8d2d-7bcc-4ffa-af2f-9c9547d4c63f}" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T11:03:34</creation>
+                  <modification>2022-04-10T11:03:34</modification>
+               </description>
+               <segment flags="0x122" base="0x1000000" size="0x0" sections="data:bss:.bss:stack:heap" pages="1" name="ram" />
+               <segment flags="0x113" base="0x2000000" size="0x0" sections="text" pages="1" name="rom" />
+            </segmentmap>
+            <clock gran_unit="ns" range_value="1" start_unit="us" gran_value="1" drift_value="0" range_unit="s" id="|P:A3_1|RI:TDMA_1|Clk:TDMA_1" uuid="{bdfe3feb-5a7e-47eb-912a-c578d168be8d}" start_value="0" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T11:03:34</creation>
+                  <modification>2022-04-10T11:04:03</modification>
+               </description>
+               <start firstMax="0 us" firstMin="0 us" first="0 us" randomStart="false" />
+            </clock>
+            <specsettings>
+               <options cc="none" rtos="none" warn="1" additionalcflags="" std="ISO C99" PrependSpecSettingsFlag="0" />
+            </specsettings>
+         </instance>
+      </resourcetype>
+      <resourcetype library="$INSTALL\models\generic.ism" type="generic" name="TDMA_2" >
+         <clock period="1 ns" />
+         <rtos>
+            <processes exclusive="false" preemptFlag="true" exactness="50" xcoreisrs="false" isrFlag="true" maximum="99" />
+            <stack default="1024" />
+            <scheduler strategy="Priority" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="preemptive" jitter="0 us" wcet="0 us" uuid="{6c71120d-c3b9-402f-92e5-90c471ba1ec5}" allowed_types="4294967295" timeslice="10 ms" name="ISRScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T11:07:19</creation>
+                  <modification>2022-04-10T11:07:19</modification>
+               </description>
+               <scheduler strategy="TDMA" offset="0 us" cycle="9 ms" allowed_strategies="67125279" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="0" type="preemptive" jitter="0 us" wcet="0 us" uuid="{e8c2a78d-70f2-4d34-b8c4-f24f1f143b3a}" allowed_types="4294967295" timeslice="10 ms" name="DefaultScheduler" tdmaperiod="10 ms" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T11:07:33</creation>
+                     <modification>2022-04-10T11:07:33</modification>
+                  </description>
+                  <scheduletable>
+                     <schedulable order="0" uid="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Speed_Sensor" slot="1 ms" />
+                     <schedulable order="1" uid="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" slot="2 ms" />
+                     <schedulable order="2" uid="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Gyroscope" slot="3 ms" />
+                     <schedulable order="3" uid="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Speed_Sensor" slot="1 ms" />
+                     <schedulable order="4" uid="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" slot="2 ms" />
+                  </scheduletable>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" idletask="0" name="S_Gyroscope" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="3 ms" uuid="{7e6b42c8-1c4c-42af-ae4e-d6c08eb457ed}" name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Gyroscope" deadline="0 us" slot="0 us" bcet="2 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T11:07:39</creation>
+                           <modification>2022-04-10T11:07:39</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="1 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" idletask="0" name="S_Speed_Sensor" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="1 ms" uuid="{1f14ee9c-0596-4907-9c6c-a1818eb3629a}" name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Speed_Sensor" deadline="0 us" slot="0 us" bcet="1 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T11:08:37</creation>
+                           <modification>2022-04-10T11:08:37</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="500 us" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" idletask="0" name="S_Steering_Input" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="2 ms" uuid="{cc22b999-5bb2-47d9-a761-a46f54c60fac}" name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" deadline="0 us" slot="0 us" bcet="1 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T11:11:47</creation>
+                           <modification>2022-04-10T11:11:47</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="500 us" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+               </scheduler>
+            </scheduler>
+         </rtos>
+         <compiler path="" optimization="0" type="" />
+         <instance uuid="{62ebfc9d-f306-458a-9fdc-51df2833bca6}" name="TDMA_2" >
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T11:07:19</creation>
+               <modification>2022-04-11T20:55:26</modification>
+               <targetcpu></targetcpu>
+            </description>
+            <cores>
+               <support>false</support>
+               <editable>false</editable>
+               <physical>1</physical>
+               <logical>1</logical>
+               <memory>uma</memory>
+               <core uuid="{1e0df8a8-479b-4044-9518-066da4f6440e}" name="Core 0" />
+            </cores>
+            <ipcobjects/>
+            <triggermodel>
+               <tokens/>
+            </triggermodel>
+            <references/>
+            <peripheral base="0x100" fabric="8" bufferstrategy="SlotOrder" uuid="{254eb429-c2bf-4f7a-967a-d6922e5f35ce}" name="CAN_Bus_Slow" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:41:03</creation>
+                  <modification>2022-04-10T12:41:03</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{a7001920-a6a5-43a7-837a-d12badcaa5b7}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:41:03</creation>
+                     <modification>2022-04-10T12:41:03</modification>
+                  </description>
+                  <busmessage offset="0 us" cycle="0 us" size="1" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="6291456" id="3" jitter="0 us" wcet="1.44444443 ms" uuid="{7a9171c6-7278-403f-a5a9-cde64afbfe5c}" fastBitRate="0" name="Speed_Sensor_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="Classic" bcet="1.22222221 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:03:22</creation>
+                        <modification>2022-04-10T13:03:22</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+                  <busmessage offset="0 us" cycle="0 us" size="1" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="8388608" id="4" jitter="0 us" wcet="1.44444443 ms" uuid="{4fa6a986-9933-4c77-8c10-a8f0e11b5a02}" fastBitRate="0" name="Steering_Input_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="Classic" bcet="1.22222221 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:04:04</creation>
+                        <modification>2022-04-10T13:04:04</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+                  <busmessage offset="0 us" cycle="0 us" size="1" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" format="Base Data Frame" propagatedPriorities="false" order="0" coreaffinity="0" priority="12582912" id="6" jitter="0 us" wcet="1.44444443 ms" uuid="{c914c4e6-e240-4c07-bd83-fe9a2a5eabe4}" fastBitRate="0" name="Gyroscope_Data" allowed_types="4294967295" timeslice="10 ms" deadline="0 us" slot="0 us" msgType="Classic" bcet="1.22222221 ms" >
+                     <description>
+                        <comment></comment>
+                        <creation>2022-04-10T13:02:32</creation>
+                        <modification>2022-04-10T13:02:32</modification>
+                     </description>
+                     <events>
+                        <event type="4" >start</event>
+                        <event type="4" >stop</event>
+                     </events>
+                  </busmessage>
+               </scheduler>
+            </peripheral>
+            <segmentmap uuid="{9364953b-ff39-44ad-a4cc-e928e1dcabf5}" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T11:07:19</creation>
+                  <modification>2022-04-10T11:07:19</modification>
+               </description>
+               <segment flags="0x122" base="0x1000000" size="0x0" sections="data:bss:.bss:stack:heap" pages="1" name="ram" />
+               <segment flags="0x113" base="0x2000000" size="0x0" sections="text" pages="1" name="rom" />
+            </segmentmap>
+            <clock gran_unit="ns" range_value="1" start_unit="us" gran_value="1" drift_value="0" range_unit="s" id="|P:A3_1|RI:TDMA_2|Clk:TDMA_2" uuid="{4cc3faff-ab3f-4fd9-a54c-b2615c5b8d35}" start_value="0" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T11:07:19</creation>
+                  <modification>2022-04-10T11:07:23</modification>
+               </description>
+               <start firstMax="0 us" firstMin="0 us" first="0 us" randomStart="false" />
+            </clock>
+            <specsettings>
+               <options cc="none" rtos="none" warn="1" additionalcflags="" std="ISO C99" PrependSpecSettingsFlag="0" />
+            </specsettings>
+         </instance>
+      </resourcetype>
+      <resourcetype library="$INSTALL\models\generic.ism" type="generic" name="TDMA_3" >
+         <clock period="1 ns" />
+         <rtos>
+            <processes exclusive="false" preemptFlag="true" exactness="50" xcoreisrs="false" isrFlag="true" maximum="99" />
+            <stack default="1024" />
+            <scheduler strategy="Priority" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="preemptive" jitter="0 us" wcet="0 us" uuid="{2bec00e2-0d6a-457c-a546-ce459557e878}" allowed_types="4294967295" timeslice="10 ms" name="ISRScheduler" deadline="0 us" slot="0 us" bcet="0 us" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:21:09</creation>
+                  <modification>2022-04-10T12:21:09</modification>
+               </description>
+               <scheduler strategy="TDMA" offset="0 us" cycle="8 ms" allowed_strategies="67125279" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="0" type="preemptive" jitter="0 us" wcet="0 us" uuid="{88a9d654-0453-46ee-8da0-3ea831b0e296}" allowed_types="4294967295" timeslice="10 ms" name="DefaultScheduler" tdmaperiod="8 ms" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:21:32</creation>
+                     <modification>2022-04-10T12:21:32</modification>
+                  </description>
+                  <scheduletable>
+                     <schedulable order="0" uid="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" slot="6 ms" />
+                     <schedulable order="1" uid="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" slot="2 ms" />
+                  </scheduletable>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" idletask="0" name="A_Steering_Output" preemptable="1" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="6 ms" uuid="{dccfe32d-bf3d-4c03-891d-dafc52969ea1}" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" deadline="0 us" slot="0 us" bcet="4 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:22:30</creation>
+                           <modification>2022-04-10T12:22:30</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="2 ms" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+                  <process syncevents="" activations="1" isr="0" xcoreisr="" idletask="0" name="A_Warning" preemptable="0" resource="" stack_limit="1024" init="0" >
+                     <instance offset="0 us" cycle="0 us" period="0 us" blockingtime="0 us" scheduleafterrunnable="0" order="0" coreaffinity="1" priority="0" extendedtask="0" jitter="0 us" wcet="2 ms" uuid="{f183d919-196a-42ee-88f5-1f93ff603b88}" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" deadline="0 us" slot="0 us" bcet="1 ms" >
+                        <description>
+                           <comment></comment>
+                           <creation>2022-04-10T12:22:00</creation>
+                           <modification>2022-04-10T12:22:00</modification>
+                        </description>
+                        <simulationreplacement loadtype="Wcet" mean="0 us" sigma="500 us" >
+                           <distribution>
+                              <entry timevalue="0 us" count="1" />
+                           </distribution>
+                        </simulationreplacement>
+                     </instance>
+                  </process>
+               </scheduler>
+            </scheduler>
+         </rtos>
+         <compiler path="" optimization="0" type="" />
+         <instance uuid="{0d1c6a7f-03a7-4476-84d2-8550a28ae67c}" name="TDMA_3" >
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T12:21:09</creation>
+               <modification>2022-04-11T20:55:26</modification>
+               <targetcpu></targetcpu>
+            </description>
+            <cores>
+               <support>false</support>
+               <editable>false</editable>
+               <physical>1</physical>
+               <logical>1</logical>
+               <memory>uma</memory>
+               <core uuid="{7f65252f-d30b-42a1-a773-74ae4b80739e}" name="Core 0" />
+            </cores>
+            <ipcobjects/>
+            <triggermodel>
+               <tokens/>
+            </triggermodel>
+            <references/>
+            <peripheral base="0x100" fabric="8" bufferstrategy="SlotOrder" uuid="{038b6670-1f76-488e-b50d-ff7d79fe6531}" name="CAN_Bus_Slow" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:41:35</creation>
+                  <modification>2022-04-10T12:41:35</modification>
+                  <targetperipheral></targetperipheral>
+               </description>
+               <scheduler strategy="CAN" offset="0 us" cycle="0 us" allowed_strategies="4294967295" inversepriority="false" period="0 us" blockingtime="0 us" propagatedPriorities="false" order="0" coreaffinity="0" priority="1" type="run-to-completi" jitter="0 us" wcet="0 us" uuid="{fde92cdf-16ac-4d41-9d4f-4e6a5a5522f8}" allowed_types="4294967295" timeslice="10 ms" name="CANMessages" deadline="0 us" slot="0 us" bcet="0 us" >
+                  <description>
+                     <comment></comment>
+                     <creation>2022-04-10T12:41:35</creation>
+                     <modification>2022-04-10T12:41:35</modification>
+                  </description>
+               </scheduler>
+            </peripheral>
+            <segmentmap uuid="{1b9eb3b4-65fe-4035-a8c3-14a2ade68cea}" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:21:09</creation>
+                  <modification>2022-04-10T12:21:09</modification>
+               </description>
+               <segment flags="0x122" base="0x1000000" size="0x0" sections="data:bss:.bss:stack:heap" pages="1" name="ram" />
+               <segment flags="0x113" base="0x2000000" size="0x0" sections="text" pages="1" name="rom" />
+            </segmentmap>
+            <clock gran_unit="ns" range_value="1" start_unit="us" gran_value="1" drift_value="0" range_unit="s" id="|P:A3_1|RI:TDMA_3|Clk:TDMA_3" uuid="{f9f40392-3781-4617-ab31-4e925925c030}" start_value="0" >
+               <description>
+                  <comment></comment>
+                  <creation>2022-04-10T12:21:09</creation>
+                  <modification>2022-04-10T12:21:24</modification>
+               </description>
+               <start firstMax="0 us" firstMin="0 us" first="0 us" randomStart="false" />
+            </clock>
+            <specsettings>
+               <options cc="none" rtos="none" warn="1" additionalcflags="" std="ISO C99" PrependSpecSettingsFlag="0" />
+            </specsettings>
+         </instance>
+      </resourcetype>
+      <peripheral speed="65000" base="0x0" fabric="10" logEnabled="false" uuid="{b5ceb380-7850-4cb1-8d04-aa234b19942d}" name="FAST_CAN_1" dataSpeed="65000" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T12:33:48</creation>
+            <modification>2022-04-10T12:33:58</modification>
+            <targetperipheral></targetperipheral>
+         </description>
+      </peripheral>
+      <peripheral speed="45000" base="0x0" fabric="10" logEnabled="false" uuid="{c0684eec-b295-4cba-abfa-7b4e7a1d27cb}" name="SLOW_CAN_1" dataSpeed="45000" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T12:34:13</creation>
+            <modification>2022-04-10T12:34:13</modification>
+            <targetperipheral></targetperipheral>
+         </description>
+      </peripheral>
+      <peripheral base="0x0" fabric="13" name="chronBUS" >
+         <restbus>
+            <files/>
+            <ecus/>
+            <buses>
+               <bus SPEED="65000" sourcefile="" type="SYSCAN" id="FAST_CAN_1" shortname="FAST_CAN_1" />
+               <bus SPEED="45000" sourcefile="" type="SYSCAN" id="SLOW_CAN_1" shortname="SLOW_CAN_1" />
+            </buses>
+            <connections/>
+            <conditions/>
+         </restbus>
+      </peripheral>
+   </allocation>
+   <mapping>
+      <map>
+         <source>|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Emergency_Braking</source>
+         <target>|P:A3_1|RI:OSEK_1</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing</source>
+         <target>|P:A3_1|RI:OSEK_1</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info</source>
+         <target>|P:A3_1|RI:OSEK_1</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_On_Off_Button</source>
+         <target>|P:A3_1|RI:OSEK_2</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection</source>
+         <target>|P:A3_1|RI:OSEK_2</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist</source>
+         <target>|P:A3_1|RI:OSEK_2</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Motion_Planning</source>
+         <target>|P:A3_1|RI:OSEK_3</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Vehicle_Dynamics</source>
+         <target>|P:A3_1|RI:OSEK_3</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera</source>
+         <target>|P:A3_1|RI:TDMA_1</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Braking</source>
+         <target>|P:A3_1|RI:TDMA_1</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Gyroscope</source>
+         <target>|P:A3_1|RI:TDMA_2</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Speed_Sensor</source>
+         <target>|P:A3_1|RI:TDMA_2</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input</source>
+         <target>|P:A3_1|RI:TDMA_2</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output</source>
+         <target>|P:A3_1|RI:TDMA_3</target>
+      </map>
+      <map>
+         <source>|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning</source>
+         <target>|P:A3_1|RI:TDMA_3</target>
+      </map>
+      <connection>
+         <target>|P:A3_1|Prp:FAST_CAN_1|Prt:CAN-</target>
+         <connect>|P:A3_1|Prp:chronBUS|Prt:FAST_CAN_1</connect>
+         <connect>|P:A3_1|RI:OSEK_1|Prp:CAN_Bus_Fast|Prt:CAN-BUS-0</connect>
+         <connect>|P:A3_1|RI:OSEK_2|Prp:CAN_Bus_Fast|Prt:CAN-BUS-0</connect>
+         <connect>|P:A3_1|RI:OSEK_3|Prp:CAN_Bus_Fast|Prt:CAN-BUS-0</connect>
+         <connect>|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|Prt:CAN-BUS-0</connect>
+      </connection>
+      <connection>
+         <target>|P:A3_1|Prp:SLOW_CAN_1|Prt:CAN-</target>
+         <connect>|P:A3_1|Prp:chronBUS|Prt:SLOW_CAN_1</connect>
+         <connect>|P:A3_1|RI:OSEK_1|Prp:CAN_Bus_Slow|Prt:CAN-BUS-0</connect>
+         <connect>|P:A3_1|RI:OSEK_2|Prp:CAN_Bus_Slow|Prt:CAN-BUS-0</connect>
+         <connect>|P:A3_1|RI:OSEK_3|Prp:CAN_Bus_Slow|Prt:CAN-BUS-0</connect>
+         <connect>|P:A3_1|RI:TDMA_2|Prp:CAN_Bus_Slow|Prt:CAN-BUS-0</connect>
+         <connect>|P:A3_1|RI:TDMA_3|Prp:CAN_Bus_Slow|Prt:CAN-BUS-0</connect>
+      </connection>
+   </mapping>
+   <components/>
+   <estimationoverride/>
+   <clockcounter/>
+   <stimulation>
+      <scenario uuid="{c5afc150-d29c-4567-85ef-0c87f1185fe9}" name="Test_Camera" default="false" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T13:05:08</creation>
+            <modification>2022-04-10T13:05:16</modification>
+         </description>
+         <description></description>
+         <generator clock="|P:A3_1|RI:TDMA_1|Clk:TDMA_1" type="peripheral" uuid="{80282565-6343-4a36-824f-ea3b7a1b9252}" id="1" >
+            <process name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" />
+            <time period="133.33 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T13:05:21</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+      </scenario>
+      <scenario uuid="{f76a7f7a-e11e-44bb-9dcd-dd1fc464c848}" name="Test_with_Button" default="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:54:23</creation>
+            <modification>2022-04-10T17:56:32</modification>
+         </description>
+         <description></description>
+         <generator clock="|P:A3_1|RI:TDMA_1|Clk:TDMA_1" type="peripheral" uuid="{404fd144-ed09-470e-99ac-bc02467509df}" id="4" >
+            <process name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" />
+            <time period="16.67 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T17:54:23</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+         <generator clock="|P:A3_1|RI:TDMA_2|Clk:TDMA_2" type="peripheral" uuid="{32de1ab9-d02f-4169-b3e8-a0a722bfa0cc}" id="1" >
+            <process name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Gyroscope" />
+            <time period="10 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T17:54:23</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+         <generator clock="|P:A3_1|RI:OSEK_2|Clk:OSEK_2" type="peripheral" uuid="{d03f4b01-f7cf-4926-9ff8-042f8f570ef7}" id="5" >
+            <process name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_On_Off_Button" />
+            <time period="0 us" periodic="0" iterations="0" first="200 ms" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T17:56:37</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+         <generator clock="|P:A3_1|RI:TDMA_2|Clk:TDMA_2" type="peripheral" uuid="{c00c9cc4-1cc6-41da-b662-789aec4f87fc}" id="2" >
+            <process name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Speed_Sensor" />
+            <time period="5 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T17:54:23</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+         <generator clock="|P:A3_1|RI:TDMA_2|Clk:TDMA_2" type="peripheral" uuid="{5b99c551-18d2-4b38-8534-460e72a78a1f}" id="3" >
+            <process name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" />
+            <time period="5 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T17:54:23</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+      </scenario>
+      <scenario uuid="{214f71eb-9c7f-4e45-952b-367cbb73cd28}" name="Test_Without_Button" default="false" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T13:13:29</creation>
+            <modification>2022-04-10T17:56:20</modification>
+         </description>
+         <description></description>
+         <generator clock="|P:A3_1|RI:TDMA_1|Clk:TDMA_1" type="peripheral" uuid="{121cd05f-b83a-4f4d-8a5b-2721203c6ea4}" id="4" >
+            <process name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" />
+            <time period="116.7 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T13:15:19</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+         <generator clock="|P:A3_1|RI:TDMA_2|Clk:TDMA_2" type="peripheral" uuid="{b19c88be-0181-4ac5-bfa4-1e64dc7d8fd9}" id="1" >
+            <process name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Gyroscope" />
+            <time period="10 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T13:13:32</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+         <generator clock="|P:A3_1|RI:TDMA_2|Clk:TDMA_2" type="peripheral" uuid="{aac02320-4883-4c4a-a515-5393f5a9634f}" id="2" >
+            <process name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Speed_Sensor" />
+            <time period="5 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T13:14:07</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+         <generator clock="|P:A3_1|RI:TDMA_2|Clk:TDMA_2" type="peripheral" uuid="{c4ab3ad0-8e99-47eb-b348-6eea405bb851}" id="3" >
+            <process name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" />
+            <time period="5 ms" periodic="1" iterations="0" first="0 us" relative="false" />
+            <random param1="0 us" param2="0 us" type="None" param3="0 us" param4="0 us" />
+            <limitation minSeparationTime="0 us" />
+            <description>
+               <comment></comment>
+               <creation>2022-04-10T13:14:36</creation>
+               <modification>2022-04-11T20:55:26</modification>
+            </description>
+            <loss probability="0" />
+         </generator>
+      </scenario>
+   </stimulation>
+   <communication/>
+   <synchronization/>
+   <requirements uuid="{efcab52c-e198-41f1-a0de-9566300ab2cf}" >
+      <eventchain uuid="{e32e970a-28a7-4c74-860c-aab92d16f2c2}" name="FR2" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T16:17:35</creation>
+            <modification>2022-04-10T16:17:39</modification>
+         </description>
+         <stepnames/>
+         <instancecolors>
+            <instance id="0" color="0xffc86808" />
+            <instance id="1" color="0xffaec808" />
+            <instance id="2" color="0xff35c808" />
+            <instance id="3" color="0xff08c855" />
+            <instance id="4" color="0xff08c2c8" />
+            <instance id="5" color="0xff0848c8" />
+            <instance id="6" color="0xff4108c8" />
+            <instance id="7" color="0xffbb08c8" />
+            <instance id="8" color="0xffc8085b" />
+            <instance id="9" color="0xffc82e08" />
+            <instance id="10" color="0xffc8a808" />
+            <instance id="11" color="0xff6ec808" />
+         </instancecolors>
+         <steps>
+            <step node="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" joins="false" id="0" streamed="false" name="Front_Camera" >
+               <output outid="1" name="conn_Front_Camera_Image_Processing" />
+            </step>
+            <step node="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" joins="false" id="1" streamed="false" name="Image_Processing" />
+         </steps>
+      </eventchain>
+      <eventchain uuid="{271dbbfe-7124-4a61-9044-bdeaf49eb0c3}" name="FR4" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:39:25</creation>
+            <modification>2022-04-10T17:40:25</modification>
+         </description>
+         <stepnames/>
+         <instancecolors>
+            <instance id="0" color="0xffc86808" />
+            <instance id="1" color="0xffaec808" />
+            <instance id="2" color="0xff35c808" />
+            <instance id="3" color="0xff08c855" />
+            <instance id="4" color="0xff08c2c8" />
+            <instance id="5" color="0xff0848c8" />
+            <instance id="6" color="0xff4108c8" />
+            <instance id="7" color="0xffbb08c8" />
+            <instance id="8" color="0xffc8085b" />
+            <instance id="9" color="0xffc82e08" />
+            <instance id="10" color="0xffc8a808" />
+            <instance id="11" color="0xff6ec808" />
+         </instancecolors>
+         <steps>
+            <step node="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" joins="false" id="0" streamed="false" name="Dash_Info" >
+               <output outid="1" name="conn_Dash_Info_Dash_Info" />
+            </step>
+            <step node="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" joins="false" id="1" streamed="false" name="Dash_Info" />
+         </steps>
+      </eventchain>
+      <eventchain uuid="{5e0a28cc-0324-469e-8d5a-6d9864d6b7a6}" name="FR5" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:41:43</creation>
+            <modification>2022-04-10T17:41:49</modification>
+         </description>
+         <stepnames/>
+         <instancecolors>
+            <instance id="0" color="0xffc86808" />
+            <instance id="1" color="0xffaec808" />
+            <instance id="2" color="0xff35c808" />
+            <instance id="3" color="0xff08c855" />
+            <instance id="4" color="0xff08c2c8" />
+            <instance id="5" color="0xff0848c8" />
+            <instance id="6" color="0xff4108c8" />
+            <instance id="7" color="0xffbb08c8" />
+            <instance id="8" color="0xffc8085b" />
+            <instance id="9" color="0xffc82e08" />
+            <instance id="10" color="0xffc8a808" />
+            <instance id="11" color="0xff6ec808" />
+         </instancecolors>
+         <steps>
+            <step node="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_On_Off_Button" joins="false" id="0" streamed="false" name="On_Off_Button" >
+               <output outid="1" name="conn_On_Off_Button_Steering_Assist" />
+            </step>
+            <step node="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist" joins="false" id="1" streamed="false" name="Steering_Assist" >
+               <output outid="2" name="conn_Steering_Assist_Steering_Output" />
+            </step>
+            <step node="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" joins="false" id="2" streamed="false" name="Steering_Output" />
+         </steps>
+      </eventchain>
+      <eventchain uuid="{ac16e9bf-9d0d-43a6-aefe-ac71acc2133c}" name="SR3" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:43:01</creation>
+            <modification>2022-04-10T17:43:38</modification>
+         </description>
+         <stepnames/>
+         <instancecolors>
+            <instance id="0" color="0xffc86808" />
+            <instance id="1" color="0xffaec808" />
+            <instance id="2" color="0xff35c808" />
+            <instance id="3" color="0xff08c855" />
+            <instance id="4" color="0xff08c2c8" />
+            <instance id="5" color="0xff0848c8" />
+            <instance id="6" color="0xff4108c8" />
+            <instance id="7" color="0xffbb08c8" />
+            <instance id="8" color="0xffc8085b" />
+            <instance id="9" color="0xffc82e08" />
+            <instance id="10" color="0xffc8a808" />
+            <instance id="11" color="0xff6ec808" />
+         </instancecolors>
+         <steps>
+            <step node="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" joins="false" id="0" streamed="false" name="Warning" >
+               <output outid="1" name="conn_Warning_Warning" />
+            </step>
+            <step node="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" joins="false" id="1" streamed="false" name="Warning" />
+         </steps>
+      </eventchain>
+      <eventchain uuid="{9d41f0bb-a7ea-4d2b-83ae-2a8891bc94fc}" name="SR4" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:44:00</creation>
+            <modification>2022-04-10T17:44:06</modification>
+         </description>
+         <stepnames/>
+         <instancecolors>
+            <instance id="0" color="0xffc86808" />
+            <instance id="1" color="0xffaec808" />
+            <instance id="2" color="0xff35c808" />
+            <instance id="3" color="0xff08c855" />
+            <instance id="4" color="0xff08c2c8" />
+            <instance id="5" color="0xff0848c8" />
+            <instance id="6" color="0xff4108c8" />
+            <instance id="7" color="0xffbb08c8" />
+            <instance id="8" color="0xffc8085b" />
+            <instance id="9" color="0xffc82e08" />
+            <instance id="10" color="0xffc8a808" />
+            <instance id="11" color="0xff6ec808" />
+         </instancecolors>
+         <steps>
+            <step node="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" joins="false" id="0" streamed="false" name="Steering_Output" >
+               <output outid="1" name="conn_Steering_Output_Steering_Output" />
+            </step>
+            <step node="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" joins="false" id="1" streamed="false" name="Steering_Output" />
+         </steps>
+      </eventchain>
+      <eventchain uuid="{10acb725-3eb5-48ff-b118-d53474739803}" name="FR3" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-11T19:55:12</creation>
+            <modification>2022-04-11T19:57:11</modification>
+         </description>
+         <stepnames/>
+         <instancecolors>
+            <instance id="0" color="0xffc86808" />
+            <instance id="1" color="0xffaec808" />
+            <instance id="2" color="0xff35c808" />
+            <instance id="3" color="0xff08c855" />
+            <instance id="4" color="0xff08c2c8" />
+            <instance id="5" color="0xff0848c8" />
+            <instance id="6" color="0xff4108c8" />
+            <instance id="7" color="0xffbb08c8" />
+            <instance id="8" color="0xffc8085b" />
+            <instance id="9" color="0xffc82e08" />
+            <instance id="10" color="0xffc8a808" />
+            <instance id="11" color="0xff6ec808" />
+         </instancecolors>
+         <steps>
+            <step node="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" joins="false" id="0" streamed="false" name="Front_Camera" >
+               <output outid="1" name="conn_Front_Camera_Image_Processing" />
+            </step>
+            <step node="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" joins="false" id="1" streamed="false" name="Image_Processing" >
+               <output outid="2" name="conn_Image_Processing_Dash_Info_0" />
+            </step>
+            <step node="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" joins="false" id="2" streamed="false" name="Dash_Info" />
+         </steps>
+      </eventchain>
+      <eventchain uuid="{0572adb0-9305-4a24-bdbd-c38c84f2f56a}" name="SR1" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-11T20:11:16</creation>
+            <modification>2022-04-11T20:11:23</modification>
+         </description>
+         <stepnames/>
+         <instancecolors>
+            <instance id="0" color="0xffc86808" />
+            <instance id="1" color="0xffaec808" />
+            <instance id="2" color="0xff35c808" />
+            <instance id="3" color="0xff08c855" />
+            <instance id="4" color="0xff08c2c8" />
+            <instance id="5" color="0xff0848c8" />
+            <instance id="6" color="0xff4108c8" />
+            <instance id="7" color="0xffbb08c8" />
+            <instance id="8" color="0xffc8085b" />
+            <instance id="9" color="0xffc82e08" />
+            <instance id="10" color="0xffc8a808" />
+            <instance id="11" color="0xff6ec808" />
+         </instancecolors>
+         <steps>
+            <step node="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" joins="false" id="0" streamed="false" name="Steering_Input" >
+               <output outid="1" name="conn_Steering_Input_Departure_Detection" />
+            </step>
+            <step node="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection" joins="false" id="1" streamed="false" name="Departure_Detection" >
+               <output outid="2" name="conn_Departure_Detection_Warning" />
+            </step>
+            <step node="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" joins="false" id="2" streamed="false" name="Warning" />
+         </steps>
+      </eventchain>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 150 ms]" from="-1" type="event_chain" to="-1" chain="FR3" uuid="{341c6416-834f-4751-93dd-a58f99a5db06}" name="event_chain_0" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-11T21:28:03</creation>
+            <modification>2022-04-11T21:28:03</modification>
+         </description>
+      </requirement>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 80 ms]" from="-1" type="event_chain" to="-1" chain="SR1" uuid="{2ad0ed86-3c34-4983-801c-61a2c210552b}" name="event_chain_3" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:46:00</creation>
+            <modification>2022-04-11T20:55:26</modification>
+         </description>
+      </requirement>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 170 ms]" from="-1" type="event_chain" to="-1" chain="SR3" uuid="{beeff8dd-0cac-4f0d-8d38-3a6efe4417f5}" name="event_chain_4" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:46:17</creation>
+            <modification>2022-04-11T20:55:26</modification>
+         </description>
+      </requirement>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 170 ms]" from="-1" type="event_chain" to="-1" chain="SR4" uuid="{1f7d05e2-af95-47a4-824b-866f83bd1b4d}" name="event_chain_5" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:46:27</creation>
+            <modification>2022-04-11T20:55:26</modification>
+         </description>
+      </requirement>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 80 ms]" from="-1" type="event_chain" to="-1" chain="FR5" uuid="{0038a1ab-9bf0-43aa-8f95-bae4177059e6}" name="event_chain_2" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:45:37</creation>
+            <modification>2022-04-11T20:55:26</modification>
+         </description>
+      </requirement>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 150 ms]" from="-1" type="event_chain" to="-1" chain="FR4" uuid="{dc6e3a20-e88b-4aad-81e3-1887a4ad9a87}" name="event_chain_1" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T17:45:07</creation>
+            <modification>2022-04-11T20:55:26</modification>
+         </description>
+      </requirement>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 150 ms]" from="-1" type="event_chain" to="-1" chain="FR2" uuid="{32438be8-86ee-4149-a122-167717d556a2}" name="event_chain" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-10T16:18:19</creation>
+            <modification>2022-04-11T20:55:26</modification>
+         </description>
+      </requirement>
+   </requirements>
+   <dependencygraph>
+      <dependency name="conn_Image_Processing_Emergency_Braking" >
+         <node name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Emergency_Braking" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Image_Processing" >
+         <node name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Data_4_Image_Processing" >
+         <node name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_4" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Dash_Info" >
+         <node name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Image_Processing_Dash_Info" >
+         <node name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" orderindex="2" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Image_Processing_Dash_Info_0" >
+         <node name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Dash_Info_Dash_Info" >
+         <node name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Dash_Info" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Emergency_Braking_Emergency_Braking_Data" >
+         <node name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Emergency_Braking" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_1|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Emergency_Braking_Data" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Image_Processing_Image_Processing_Data" >
+         <node name="|P:A3_1|RI:OSEK_1|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Image_Processing" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Image_Processing_Data" orderindex="1" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_AND_Departure_Detection_Input_C_Departure_Detection" >
+         <node name="|P:A3_1|RI:OSEK_2|AND:AND_Departure_Detection_Input" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Steering_Input_Departure_Detection" >
+         <node name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_AND_Steering_Assist_Input_Steering_Assist" >
+         <node name="|P:A3_1|RI:OSEK_2|AND:AND_Steering_Assist_Input" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_On_Off_Button_Steering_Assist" >
+         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_On_Off_Button" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Steering_Assist_Steering_Assist_Data" >
+         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Steering_Assist_Data" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_C_Departure_Detection_Departure_Detection_Data" >
+         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Departure_Detection_Data" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Motion_Planning_Data_AND_Steering_Assist_Input" >
+         <node name="|P:A3_1|RI:OSEK_3|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Motion_Planning_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|AND:AND_Steering_Assist_Input" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_On_Off_Button_AND_Steering_Assist_Input" >
+         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_On_Off_Button" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|AND:AND_Steering_Assist_Input" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_C_Departure_Detection_AND_Steering_Assist_Input" >
+         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|AND:AND_Steering_Assist_Input" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Image_Processing_Data_0_AND_Departure_Detection_Input" >
+         <node name="|P:A3_1|RI:OSEK_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Image_Processing_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|AND:AND_Departure_Detection_Input" orderindex="1" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_S_Steering_Input_AND_Departure_Detection_Input" >
+         <node name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|AND:AND_Departure_Detection_Input" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_AND_Motion_Planning_Motion_Planning" >
+         <node name="|P:A3_1|RI:OSEK_3|AND:AND_Motion_Planning" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Motion_Planning" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_AND_Vehicle_Dynamics_Input_Vehicle_Dynamics" >
+         <node name="|P:A3_1|RI:OSEK_3|AND:AND_Vehicle_Dynamics_Input" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Vehicle_Dynamics" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Motion_Planning_Motion_Planning_Data" >
+         <node name="|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Motion_Planning" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_3|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Motion_Planning_Data" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Speed_Sensor_Data_AND_Vehicle_Dynamics_Input" >
+         <node name="|P:A3_1|RI:TDMA_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Speed_Sensor_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_3|AND:AND_Vehicle_Dynamics_Input" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Gyroscope_Data_AND_Vehicle_Dynamics_Input" >
+         <node name="|P:A3_1|RI:TDMA_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Gyroscope_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_3|AND:AND_Vehicle_Dynamics_Input" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Image_Processing_Data_AND_Motion_Planning" >
+         <node name="|P:A3_1|RI:OSEK_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Image_Processing_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_3|AND:AND_Motion_Planning" orderindex="2" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Vehicle_Dynamics_AND_Motion_Planning" >
+         <node name="|P:A3_1|RI:OSEK_3|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Vehicle_Dynamics" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_3|AND:AND_Motion_Planning" orderindex="1" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Emergency_Braking_Data_Braking" >
+         <node name="|P:A3_1|RI:OSEK_1|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Emergency_Braking_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Braking" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Front_Camera_Data" >
+         <node name="|P:A3_1|RI:TDMA_1|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Front_Camera" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Data_Front_Camera_Data_1" >
+         <node name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_1" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Data_1_Front_Camera_Data_2" >
+         <node name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_1" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_2" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Data_2_Front_Camera_Data_3" >
+         <node name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_2" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_3" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Front_Camera_Data_3_Front_Camera_Data_4" >
+         <node name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_3" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_1|Prp:CAN_Bus_Fast|SI:CANMessages|SI:Front_Camera_Data_4" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Speed_Sensor_Speed_Sensor_Data" >
+         <node name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Speed_Sensor" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Speed_Sensor_Data" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Steering_Input_Steering_Input_Data" >
+         <node name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Steering_Input_Data" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Gyroscope_Gyroscope_Data" >
+         <node name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Gyroscope" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Gyroscope_Data" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Steering_Output_Steering_Output" >
+         <node name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Steering_Assist_Data_Steering_Output" >
+         <node name="|P:A3_1|RI:OSEK_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Steering_Assist_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Steering_Assist_Steering_Output" >
+         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Warning_Warning" >
+         <node name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Departure_Detection_Warning" >
+         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Departure_Detection" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Steering_Input_Warning" >
+         <node name="|P:A3_1|RI:TDMA_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_Steering_Input" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="dataflow" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+      <dependency name="conn_Departure_Detection_Data_A_Warning" >
+         <node name="|P:A3_1|RI:OSEK_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Departure_Detection_Data" />
+         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Warning" orderindex="0" flowtype="event" >
+            <delay bestcase="0 us" worstcase="0 us" >
+               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
+                  <distribution>
+                     <entry timevalue="0 us" count="1" />
+                  </distribution>
+               </simulationreplacement>
+            </delay>
+         </activates>
+      </dependency>
+   </dependencygraph>
+   <report>
+      <types csv="true" ipr="false" cvr="false" html="true" />
+      <flags requirementhistogram="false" cpu="true" flexraymessage="true" requirementtime="false" requirement="false" function="true" transfercounter="true" functionhistogram="true" ecreqnettime="false" process="true" waitendsexecution="false" calltree="false" processhistogram="true" functiontime="false" canmessage="true" />
+      <timerange end="inf" start="0 us" enabled="false" />
+      <splitevent name="INCHRON_REPORT_SPLIT" enabled="false" />
+      <functionalcorrectnessevent name="INCHRON_FUNCTIONAL_CORRECT" enabled="false" />
+      <name></name>
+      <dir>report</dir>
+      <template>builtin</template>
+      <maxcalldepth>100</maxcalldepth>
+      <exclude/>
+      <hiddenprocesses></hiddenprocesses>
+   </report>
+   <optsettings simtime="500 ms" evaluation="chronVAL" >
+      <algorithm name="chronOPT" />
+      <parameter key="lengthTabuList" value="25" />
+      <parameter key="maxNeighborhood" value="5" />
+      <objective target="|P:A3_1" priority="0" type="1" />
+      <objective target="|P:A3_1" priority="1" type="3" />
+      <objective target="|P:A3_1" priority="2" type="4" />
+      <freedom isactive="true" target="|P:A3_1" type="0" />
+      <freedom isactive="true" target="|P:A3_1" type="1" />
+      <haltconditions haltnoimprovement="50" rankbelow="1" iterations="200" haltnoimprovefor="true" haltafter="true" haltrankbelow="true" />
+   </optsettings>
+   <toolsettings>
+      <viewprofile active="true" name="default" >
+         <setting type="chronBUS-Properties" >
+            <visible value="false" />
+         </setting>
+         <setting type="EnvironmentControl" >
+            <visible value="false" />
+         </setting>
+         <setting type="ProcessStateView" >
+            <visible value="true" />
+            <diagram height="54" showdetails="false" name="Load:OSEK_1:OSEK_1" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <diagram height="54" showdetails="false" name="Load:OSEK_2:OSEK_2" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <diagram height="54" showdetails="false" name="Load:OSEK_3:OSEK_3" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <diagram height="54" showdetails="false" name="Load:OSEK_4:OSEK_4" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <diagram height="54" showdetails="false" name="Load:TDMA_1:TDMA_1" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <diagram height="54" showdetails="false" name="Load:TDMA_2:TDMA_2" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <diagram height="54" showdetails="false" name="Load:TDMA_3:TDMA_3" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <diagram height="54" showdetails="false" name="Load:TDMA_4:TDMA_4" visible="false" >
+               <granularity value="1.25 ms" />
+               <smoothing value="4" />
+            </diagram>
+            <autoDiagramHeight value="true" />
+            <diagram height="54" showdetails="false" name="Emergency_Braking:OSEK_1" visible="true" />
+            <diagram height="54" showdetails="false" name="Dash_Info:OSEK_1" visible="true" />
+            <diagram height="54" showdetails="false" name="Image_Processing:OSEK_1" visible="true" />
+            <diagram height="54" showdetails="false" name="On_Off_Button:OSEK_2" visible="true" />
+            <diagram height="54" showdetails="false" name="Steering_Assist:OSEK_2" visible="true" />
+            <diagram height="54" showdetails="false" name="Motion_Planning:OSEK_3" visible="true" />
+            <diagram height="54" showdetails="false" name="Vehicle_Dynamics:OSEK_3" visible="true" />
+            <diagram height="54" showdetails="false" name="Departure_Detection:OSEK_4" visible="true" />
+            <diagram height="54" showdetails="false" name="Front_Camera:TDMA_1" visible="true" />
+            <diagram height="54" showdetails="false" name="Gyroscope:TDMA_2" visible="true" />
+            <diagram height="54" showdetails="false" name="Speed_Sensor:TDMA_2" visible="true" />
+            <diagram height="54" showdetails="false" name="Steering_Input:TDMA_2" visible="true" />
+            <diagram height="54" showdetails="false" name="Steering_Output:TDMA_3" visible="true" />
+            <diagram height="54" showdetails="false" name="Warning:TDMA_3" visible="true" />
+            <diagram height="54" showdetails="false" name="Braking:TDMA_4" visible="true" />
+            <diagram height="54" showdetails="false" name="CAN:SLOW_CAN_1" visible="true" />
+            <diagram height="54" showdetails="false" name="CAN:FAST_CAN_1" visible="true" />
+            <window width="1910" x="0" y="-140" height="1055" fullscreen="0" maximized="0" />
+            <time value="0 us" />
+            <showdataflow value="true" />
+            <showactivationflow value="true" />
+            <eventchains>
+               <eventchain name="SR3" visible="-" />
+               <eventchain name="SR4" visible="-" />
+               <eventchain name="FR2" visible="-" />
+               <eventchain name="FR3" visible="" />
+               <eventchain name="FR4" visible="-" />
+               <eventchain name="FR5" visible="-" />
+               <eventchain name="FR2_2" visible="-" />
+               <eventchain name="SR1" visible="-" />
+            </eventchains>
+         </setting>
+         <setting type="EventChainVisibility" >
+            <visible value="false" />
+            <window width="467" x="1028" y="163" height="611" fullscreen="0" maximized="0" />
+         </setting>
+         <setting type="RequirementWindow" >
+            <visible value="true" />
+         </setting>
+         <setting type="ControlWindow" >
+            <visible value="false" />
+         </setting>
+      </viewprofile>
+      <setting type="Editor" >
+         <TreeViewFoldingState>
+            <entry iscollapsed="false" key="{c914c4e6-e240-4c07-bd83-fe9a2a5eabe4}" />
+            <entry iscollapsed="false" key="{40ec0a4c-00f6-47bd-a7ac-82c14f78a959}" />
+            <entry iscollapsed="false" key="{e5ff150e-2343-420a-ae0c-d8ed72a7d9d1}" />
+            <entry iscollapsed="true" key="{8677d688-8de6-406a-a1cb-a24715f4c2a0}" />
+            <entry iscollapsed="false" key="{4c527bd6-f41e-411b-9af0-9308202e4d2b}" />
+            <entry iscollapsed="false" key="{3385a9f0-a536-4ac9-ba4c-7ad0ebffc27a}" />
+            <entry iscollapsed="false" key="{764c58be-1b78-435b-8652-4bf74bbffe2a}" />
+            <entry iscollapsed="false" key="{d3c3b1a3-2ff9-4374-8d6a-1d71f958c446}" />
+            <entry iscollapsed="false" key="{e9efc080-9577-4ef3-ae39-b4d8ab735360}" />
+            <entry iscollapsed="false" key="{b9c98ed7-3089-4fb0-aff4-79f31afbf804}" />
+            <entry iscollapsed="true" key="{0d1c6a7f-03a7-4476-84d2-8550a28ae67c}" />
+            <entry iscollapsed="true" key="{62ebfc9d-f306-458a-9fdc-51df2833bca6}" />
+            <entry iscollapsed="false" key="{0b2edcd9-f22d-4aa1-b5d4-41ae2382534d}" />
+            <entry iscollapsed="true" key="{bea7f32b-cf1a-4cf9-9dd6-b3ad43fea28f}" />
+            <entry iscollapsed="false" key="{09162f32-b7be-4ca7-855e-c87be8ee1dd6}/EventChains" />
+            <entry iscollapsed="false" key="{62ebfc9d-f306-458a-9fdc-51df2833bca6}/Peripherals" />
+            <entry iscollapsed="false" key="{4fa6a986-9933-4c77-8c10-a8f0e11b5a02}/conn_Steering_Input_Steering_Input_Data" />
+            <entry iscollapsed="false" key="{7a9171c6-7278-403f-a5a9-cde64afbfe5c}" />
+            <entry iscollapsed="false" key="{73644832-9195-4dde-be96-f4dfeb67a796}/Peripherals" />
+            <entry iscollapsed="false" key="{bea7f32b-cf1a-4cf9-9dd6-b3ad43fea28f}/Peripherals" />
+            <entry iscollapsed="true" key="{b5ceb380-7850-4cb1-8d04-aa234b19942d}" />
+            <entry iscollapsed="false" key="{4fa6a986-9933-4c77-8c10-a8f0e11b5a02}" />
+            <entry iscollapsed="false" key="{850c2bcf-b705-4edf-818e-cfb7d238e852}/conn_Departure_Detection_Data_AND_Steering_Assist_Input" />
+            <entry iscollapsed="false" key="{759ed724-b942-47b3-a822-b489a2a652cc}" />
+            <entry iscollapsed="false" key="{09162f32-b7be-4ca7-855e-c87be8ee1dd6}/Buses" />
+            <entry iscollapsed="false" key="{0d1c6a7f-03a7-4476-84d2-8550a28ae67c}/Peripherals" />
+            <entry iscollapsed="false" key="{4a3d3f53-63d4-4705-b626-8cbc67c17be7}/Peripherals" />
+            <entry iscollapsed="false" key="{4c527bd6-f41e-411b-9af0-9308202e4d2b}/conn_Motion_Planning_Data_AND_Steering_Assist_Input" />
+         </TreeViewFoldingState>
+      </setting>
+      <setting type="SimulatorWindow" >
+         <window width="1920" x="-8" y="1072" height="1017" fullscreen="0" maximized="1" />
+         <viewsmaximized value="false" />
+         <checkStack value="false" />
+         <checkTiming value="false" />
+         <checkNesting value="false" />
+         <checkRecursion value="false" />
+         <checkRTOSFail value="false" />
+         <checkAssertFail value="false" />
+         <checkRequirementFail value="false" />
+         <breakAt value="false" />
+         <runFor value="true" time="10 s" />
+         <breakEvent value="false" />
+         <referenceCursors num="1" >
+            <cursor id="0" pos="100 us" />
+         </referenceCursors>
+      </setting>
+      <setting type="EventSpectrumPlot" >
+         <window width="1000" x="40" y="40" height="800" fullscreen="0" maximized="0" />
+      </setting>
+      <setting type="ResponseTimeCompositionWindow" >
+         <window width="1920" x="-8" y="-8" height="1017" fullscreen="0" maximized="1" />
+      </setting>
+   </toolsettings>
+</cs2:chronsimproject>
