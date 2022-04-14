@@ -68,8 +68,8 @@ elseif case_id==2
 % Initialization
     % sampling time(s) & delay
     EMB.n_pipeline = 1;
-    EMB.tau = 126e-3;
-    EMB.h = 126e-3;
+    EMB.tau = 110e-3;
+    EMB.h = 110e-3;
     EMB.contorller_type = 1;
 
     %agumentation

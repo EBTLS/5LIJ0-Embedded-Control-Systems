@@ -97,6 +97,7 @@ for loop=1:length(pattern)
         'MarkerEdgeColor',plot_colours(loop),...
         'Color', plot_colours(loop))
     hold on
+    grid on
 end   
 ylabel(yLabel,'FontSize',20) % x-axis label
 xlabel(xLabel,'FontSize',20) % y-axis label
