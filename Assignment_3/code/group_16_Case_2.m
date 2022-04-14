@@ -57,9 +57,10 @@ else
 end
 EMB_CS.R = 1;
 
-temp = [0 1 100 2 1 0];
+temp = [0 0 0 0 100 0];
 
 EMB_CS.Q = 100000*(temp') * temp;
+
 clear temp
 [EMB_CS.K, EMB_CS.F, EMB_CS.K_T, EMB_CS.T] = discreteTimeController(EMB.tau, EMB.h, EMB_CS.Q, EMB_CS.R, EMB_CS);
 
