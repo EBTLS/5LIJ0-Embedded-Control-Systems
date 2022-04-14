@@ -2,16 +2,16 @@
 <cs2:chronsimproject xmlns:cs2="http://www.inchron.com/inchron-2.9.2.xsd" xsi:schemaLocation="http://www.inchron.com/inchron-2.9.2.xsd" version="2.0" uuid="{09162f32-b7be-4ca7-855e-c87be8ee1dd6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
    <general>
       <dir>D:\OneDrive\TU_Delft\Q3\5LIJ0 Embedded Control Systems\5LIJ0 ECS Assignments\Assignment_3\INCHRON_project</dir>
-      <sourceipr>D:\OneDrive\TU_Delft\Q3\5LIJ0 Embedded Control Systems\5LIJ0 ECS Assignments\Assignment_3\INCHRON_project\A3_CAN.ipr</sourceipr>
+      <sourceipr>D:\OneDrive\TU_Delft\Q3\5LIJ0 Embedded Control Systems\5LIJ0 ECS Assignments\Assignment_3\INCHRON_project\A3_1_05_without_button.ipr</sourceipr>
       <savedir>D:\OneDrive\TU_Delft\Q3\5LIJ0 Embedded Control Systems\5LIJ0 ECS Assignments\Assignment_3\INCHRON_project</savedir>
       <name>A3_1</name>
       <version></version>
       <description>
          <comment></comment>
          <creation>2022-04-10T11:02:37</creation>
-         <modification>2022-04-14T15:00:42</modification>
+         <modification>2022-04-14T17:48:47</modification>
       </description>
-      <last-modified>2022-04-14T17:00:44</last-modified>
+      <last-modified>2022-04-14T20:03:53</last-modified>
       <author>jxzhang</author>
       <email></email>
       <creator build="20200828A" version="2.9.2" />
@@ -1044,7 +1044,7 @@
             <loss probability="0" />
          </generator>
       </scenario>
-      <scenario uuid="{f76a7f7a-e11e-44bb-9dcd-dd1fc464c848}" name="Test_with_Button" default="true" >
+      <scenario uuid="{f76a7f7a-e11e-44bb-9dcd-dd1fc464c848}" name="Test_with_Button" default="false" >
          <description>
             <comment></comment>
             <creation>2022-04-10T17:54:23</creation>
@@ -1112,7 +1112,7 @@
             <loss probability="0" />
          </generator>
       </scenario>
-      <scenario uuid="{214f71eb-9c7f-4e45-952b-367cbb73cd28}" name="Test_Without_Button" default="false" >
+      <scenario uuid="{214f71eb-9c7f-4e45-952b-367cbb73cd28}" name="Test_Without_Button" default="true" >
          <description>
             <comment></comment>
             <creation>2022-04-10T13:13:29</creation>
@@ -1629,6 +1629,13 @@
             <step node="|P:A3_1|RI:TDMA_3|SI:ISRScheduler|SI:DefaultScheduler|SI:A_Steering_Output" joins="false" id="1" streamed="false" />
          </steps>
       </eventchain>
+      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 300 ms]" from="-1" type="event_chain" to="-1" chain="FR1_9" uuid="{d2eaffc9-7873-47b9-8a2c-8cbb610501cb}" name="event_chain_12" match="0" visible="true" enabled="true" >
+         <description>
+            <comment></comment>
+            <creation>2022-04-14T15:00:42</creation>
+            <modification>2022-04-14T15:00:42</modification>
+         </description>
+      </requirement>
       <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 300 ms]" from="-1" type="event_chain" to="-1" chain="FR1_5" uuid="{6b63834c-61d7-4f1f-9aed-473d56993cf2}" name="event_chain_10" match="0" visible="true" enabled="true" >
          <description>
             <comment></comment>
@@ -1739,13 +1746,6 @@
             <comment></comment>
             <creation>2022-04-10T16:18:19</creation>
             <modification>2022-04-14T14:45:29</modification>
-         </description>
-      </requirement>
-      <requirement instA="1" warnmargin="0 us" instB="0" warnmarginrel="true" bound="]-infty, 300 ms]" from="-1" type="event_chain" to="-1" chain="FR1_9" uuid="{d2eaffc9-7873-47b9-8a2c-8cbb610501cb}" name="event_chain_12" match="0" visible="true" enabled="true" >
-         <description>
-            <comment></comment>
-            <creation>2022-04-14T15:00:42</creation>
-            <modification>2022-04-14T15:00:42</modification>
          </description>
       </requirement>
    </requirements>
@@ -1933,18 +1933,6 @@
       <dependency name="conn_Steering_Assist_Steering_Assist_Data" >
          <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:C_Steering_Assist" />
          <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|Prp:CAN_Bus_Slow|SI:CANMessages|SI:Steering_Assist_Data" orderindex="0" flowtype="event" >
-            <delay bestcase="0 us" worstcase="0 us" >
-               <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
-                  <distribution>
-                     <entry timevalue="0 us" count="1" />
-                  </distribution>
-               </simulationreplacement>
-            </delay>
-         </activates>
-      </dependency>
-      <dependency name="conn_On_Off_Button_AND_Steering_Assist_Input" >
-         <node name="|P:A3_1|RI:OSEK_2|SI:ISRScheduler|SI:DefaultScheduler|SI:S_On_Off_Button" />
-         <activates activates="false" consumenum="1" queuelength="4" overwrite="true" recordnum="0" type="activation" name="|P:A3_1|RI:OSEK_2|AND:AND_Steering_Assist_Input" orderindex="0" flowtype="event" >
             <delay bestcase="0 us" worstcase="0 us" >
                <simulationreplacement delaytype="None" mean="0 us" sigma="0 us" >
                   <distribution>
