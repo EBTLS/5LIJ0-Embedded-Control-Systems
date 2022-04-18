@@ -20,4 +20,9 @@ This is a individual assignment, so that you can see two different folders: `Ass
 
 # Assignment 3
 
-Hi
+In Assignment 3, we need to design system architecture and controller for the LKAS braking systems in two scenarios:
+
+1. Use OSEK MCU, TDMA MCU and CAN bus, with a budget of 850 Euro (mainly designed by JXZHANG)
+2. Use OSEK MCU, TDMA MCU and FlexRay bus, with a budget of 850 Euro (mainly designed by YTLi)
+
+All of the project are modelled, tested and examined in the INCHron Tool-Suite
