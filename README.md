@@ -1,10 +1,14 @@
 # Embedded Control Systems Project
 
-> Jiaxuan Zhang, Yiting Li
-
-
-
 This repo contains 3 assignments from TU Eindhoven 5LIJ0 Embedded Control Systems Course given by Professor. Dip Goswami
+
+**Lecturer**: Professor. Dip Goswami
+
+**Content:** This course mainly focus on designing real-time control systems and some other industrial control systems with real-time requirements
+
+**Team Members**: Jiaxuan Zhang, Yiting Li
+
+There are three assignments in this course
 
 # Assignment 1
 
